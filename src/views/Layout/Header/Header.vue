@@ -2,6 +2,7 @@
   <div class="Header">
     <div class="container">
       <div class="first-wrap">
+        <!-- 字体需修改 -->
         <h1>广东工业大学 | 程序设计</h1>
         <ul class="nav_list">
           <li @click="handleChange(0)" class="active">
@@ -50,6 +51,7 @@ export default {
   width: 100%;
   position: fixed;
   background: #7ad3d6;
+  z-index: 999;
 
   .container {
     display: flex;

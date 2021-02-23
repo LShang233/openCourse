@@ -12,6 +12,13 @@ import ActivitySilhouette from '@/views/AboutUs/ActivitySilhouette/ActivitySilho
 import NotificationForm from '@/views/AboutUs/NotificationForm/NotificationForm'
 import UniversityAlliance from '@/views/AboutUs/UniversityAlliance/UniversityAlliance'
 import Login from '@/views/Login/Login'
+import Notice from '@/views/ClassResources/Notice/Notice'
+import ClassSum from '@/views/ClassResources/ClassSum/ClassSum'
+import VideoLearn from '@/views/ClassResources/VideoLearn/VideoLearn'
+import ResourceDownload from '@/views/ClassResources/ResourceDownload/ResourceDownload'
+import ExtraStudy from '@/views/ClassResources/ExtraStudy/ExtraStudy'
+import Discuss from '@/views/ClassResources/Discuss/Discuss'
+import ClassAssess from '@/views/ClassResources/ClassAssess/ClassAssess'
 
 Vue.use(Router)
 
@@ -31,7 +38,45 @@ export default new Router({
         {
           path: 'ClassResources',
           name: 'ClassResources',
-          component: ClassResources
+          component: ClassResources,
+          redirect: 'ClassResources/Notice',
+          children: [
+            {
+              name: 'Notice',
+              path: 'Notice',
+              component: Notice
+            },
+            {
+              name: 'ClassSum',
+              path: 'ClassSum',
+              component: ClassSum
+            },
+            {
+              name: 'VideoLearn',
+              path: 'VideoLearn',
+              component: VideoLearn
+            },
+            {
+              name: 'ResourceDownload',
+              path: 'ResourceDownload',
+              component: ResourceDownload
+            },
+            {
+              name: 'ExtraStudy',
+              path: 'ExtraStudy',
+              component: ExtraStudy
+            },
+            {
+              name: 'Discuss',
+              path: 'Discuss',
+              component: Discuss
+            },
+            {
+              name: 'ClassAssess',
+              path: 'ClassAssess',
+              component: ClassAssess
+            },
+          ]
         },
         {
           path: 'AboutUs',

@@ -1,15 +1,115 @@
 <template>
-  <div>
-      课程资源
+  <div id="ClassResources">
+    <div class="class_wrap">
+      <ul class="left_nav">
+        <!-- 侧导航栏 -->
+        <li v-for="(item, index) in leftNav" :key="index">
+          <router-link
+            @click.native="changePanel(index)"
+            class="nav_item"
+            :class="index === panelIndex ? 'active' : ''"
+            :to="item.url"
+            >{{ item.name }}</router-link
+          >
+        </li>
+      </ul>
+      <router-view class="main_content"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      //左侧导航栏数据
+      leftNav: [
+        {
+          name: "通知公告",
+          url: "/ClassResources/Notice",
+        },
+        {
+          name: "课程概要",
+          url: "/ClassResources/ClassSum",
+        },
+        {
+          name: "视频教学",
+          url: "/ClassResources/VideoLearn",
+        },
+        {
+          name: "资源下载",
+          url: "/ClassResources/ResourceDownload",
+        },
+        {
+          name: "拓展学习",
+          url: "/ClassResources/ExtraStudy",
+        },
+        {
+          name: "讨论区",
+          url: "/ClassResources/Discuss",
+        },
+        {
+          name: "课程评价",
+          url: "/ClassResources/ClassAssess",
+        },
+      ],
+      //当前所在页
+      panelIndex: 0,
+    };
+  },
+  methods: {
+    //切换面板
+    changePanel(index) {
+      this.panelIndex = index;
+    },
+  },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#ClassResources {
+  // margin: 0 auto;
+  // width: 1200px;
+  // display: flex;
+  // justify-content: center;
 
+  .class_wrap {
+    padding: 20px;
+    margin: 0 auto;
+    width: 1200px;
+    display: flex;
+    // justify-content: center;
+
+    .left_nav {
+      
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 200px;
+
+      li {
+        width: 200px;
+        background: #f8f8f8;
+
+        .nav_item {
+          display: inline-block;
+          width: 100%;
+          padding: 10px 0;
+          color: #868684;
+          transition: all 0.1s;
+
+          &:hover,
+          &.active {
+            color: #fff;
+            background: #57aeb1;
+          }
+        }
+      }
+    }
+
+    .main_content {
+      margin-left: 20px;
+      width: calc(1200px - 260px);
+    }
+  }
+}
 </style>
