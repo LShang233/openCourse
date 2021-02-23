@@ -5,10 +5,16 @@ import App from './App'
 import router from './router'
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
+import axios from 'axios'
 
 Vue.use(ViewUI);
 
-Vue.config.productionTip = false
+Vue.prototype.$http = axios;
+Vue.prototype.domain = 'http://39.98.41.126:30004'
+Vue.config.productionTip = false;
+
+//  忽略警告
+Vue.config.silent = true;
 
 /* eslint-disable no-new */
 new Vue({
