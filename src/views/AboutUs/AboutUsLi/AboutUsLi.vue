@@ -39,6 +39,9 @@ export default {
       li[index].classList.add("active");
     },
   },
+  mounted() {
+    this.addActive(0);
+  },
 };
 </script>
 
