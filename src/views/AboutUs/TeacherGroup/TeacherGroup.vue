@@ -4,7 +4,7 @@
       <p>课程负责人</p>
       <div class="teacher-cards">
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/xie.2730c8e.png')"
           :name="'谢光强'"
           :content="'博士、副教授\n广东工业大学计算机学院副院长\n中国人工智能学会科普工作委员会委员'"
           :main="'人工智能,移动互联网,数据挖掘'"
@@ -14,77 +14,77 @@
       <p>骨干教师</p>
       <div class="teacher-cards">
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/wu.8919f53.png')"
           :name="'吴伟民'"
           :content="'教授、研究生导师\n广东工业大学计算机学院副院长\n广东省计算机学会常务理事、图像图形分会秘书长'"
           :main="'数据结构与算法、可视计算与虚拟机、系统介入与信息安全'"
           @click.native="toPage(1)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/an.e2db41f.png')"
           :name="'曾安'"
           :content="'教授、博士\n广东工业大学计算机学院任教\nIEEE会员'"
           :main="'人工智能,数据挖掘'"
           @click.native="toPage(2)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/bo.61a80ac.png')"
           :name="'谢国波'"
           :content="'教授、硕士生导师\n广东工业大学教学科研工作者\n广东省高端厨房电器企业重点实验室负责人'"
           :main="'混沌保密通信，云计算与大数据，基于机器视觉的高精度检测和测量'"
           @click.native="toPage(3)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/wei.d6be8f3.png')"
           :name="'林伟'"
           :content="'副教授\n广东工业大学计算机学院教师'"
           :main="'计算机管理系统，嵌入式系统应用'"
           @click.native="toPage(4)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/yang.png')"
           :name="'李杨'"
           :content="'博士，副教授\n广东工业大学计算机学院计算机科学系副主任\n广东省计算机学会大数据专业委员会会员'"
           :main="'人工智能,移动互联网,数据挖掘'"
           @click.native="toPage(5)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/zhu.30b1e6a.png')"
           :name="'朱清华'"
           :content="'博士、副教授\n广东工业大学计算机学院硕士生导师\nIEEE 高级会员，ACM会员'"
           :main="'离散事件系统、Petri网理论及应用、优化调度算法'"
           @click.native="toPage(6)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/chen.1961b0c.png')"
           :name="'陈云华'"
           :content="'博士、副教授\n广东工业大学计算机学院讲师\nCCF会员'"
           :main="'智能视频监控、面部表情识别、图像超分辨率、智能与软计算'"
           @click.native="toPage(7)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/ying.f8cd54b.jpg')"
           :name="'曾颖'"
           :content="'广东工业大学计算机学院讲师\n广东工业大学十佳青年授课教师'"
           :main="'数据结构与算法'"
           @click.native="toPage(8)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/xuan.d808a03.jpg')"
           :name="'孙宣东'"
           :content="'博士\n广东工业大学计算机学院讲师\nACM指导教师'"
           :main="'信息安全'"
           @click.native="toPage(9)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/hui.4ced16d.jpg')"
           :name="'汪明慧'"
           :content="'广东工业大学计算机学院讲师'"
           :main="'基于可信计算技术的自助服务系统终端可信环境构建研究'"
           @click.native="toPage(10)"
         />
         <TeacherCard
-          :src="'?'"
+          :src="require('./../../../assets/teacherstyle/head/lu.b03aa5f.jpg')"
           :name="'路璐'"
           :content="'广东工业大学计算机学院讲师\n十佳青年授课教师'"
           :main="'信息安全'"
@@ -110,7 +110,7 @@
       </div>
       <div v-if="teacherId == 0">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/xie.2730c8e.png" />
           <p class="teacher-name">谢光强</p>
           <p>课程负责人</p>
         </div>
@@ -223,7 +223,7 @@
       </div>
       <div v-if="teacherId == 1">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/wu.8919f53.png" />
           <p class="teacher-name">吴伟民</p>
           <p>骨干教师</p>
         </div>
@@ -266,7 +266,7 @@
       </div>
       <div v-if="teacherId == 2">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/an.e2db41f.png" />
           <p class="teacher-name">曾安</p>
           <p>骨干教师</p>
         </div>
@@ -302,7 +302,7 @@
       </div>
       <div v-if="teacherId == 3">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/bo.61a80ac.png" />
           <p class="teacher-name">谢国波</p>
           <p>骨干教师</p>
         </div>
@@ -353,7 +353,7 @@
       </div>
       <div v-if="teacherId == 4">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/wei.d6be8f3.png" />
           <p class="teacher-name">林伟</p>
           <p>骨干教师</p>
         </div>
@@ -408,7 +408,7 @@
       </div>
       <div v-if="teacherId == 5">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/yang.png" />
           <p class="teacher-name">李杨</p>
           <p>骨干教师</p>
         </div>
@@ -497,7 +497,7 @@
       </div>
       <div v-if="teacherId == 6">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/zhu.30b1e6a.png" />
           <p class="teacher-name">朱清华</p>
           <p>骨干教师</p>
         </div>
@@ -578,7 +578,7 @@
       </div>
       <div v-if="teacherId == 7">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/chen.1961b0c.png" />
           <p class="teacher-name">陈云华</p>
           <p>骨干教师</p>
         </div>
@@ -664,7 +664,7 @@
       </div>
       <div v-if="teacherId == 8">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/ying.f8cd54b.jpg" />
           <p class="teacher-name">曾颖</p>
           <p>骨干教师</p>
         </div>
@@ -683,7 +683,7 @@
       </div>
       <div v-if="teacherId == 9">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/xuan.d808a03.jpg" />
           <p class="teacher-name">孙宣东</p>
           <p>骨干教师</p>
         </div>
@@ -707,7 +707,7 @@
       </div>
       <div v-if="teacherId == 10">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/hui.4ced16d.jpg" />
           <p class="teacher-name">汪明慧</p>
           <p>骨干教师</p>
         </div>
@@ -720,7 +720,7 @@
       </div>
       <div v-if="teacherId == 11">
         <div class="detail-photo">
-          <img src="?" />
+          <img src="./../../../assets/teacherstyle/head/lu.b03aa5f.jpg" />
           <p class="teacher-name">路璐</p>
           <p>骨干教师</p>
         </div>
