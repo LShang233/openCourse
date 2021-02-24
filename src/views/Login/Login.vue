@@ -7,16 +7,16 @@
       </div>
       <div class="login-div" v-if="htmlId == 1">
         <p>账号登录</p>
-        <div class="log-buttom">
+        <!-- <div class="log-buttom">
           <div>学生端</div>
           <div>教师端</div>
-        </div>
+        </div> -->
         <div class="log-form">
           <div>
             <label>邮箱</label>
             <input
               placeholder="请输入邮箱号"
-              @blur="getLoginCode()"
+              @blur="getLoginCode(loginForm.email, 'login-code')"
               v-model="loginForm.email"
             />
           </div>
@@ -31,7 +31,11 @@
           <div class="code">
             <label>验证码</label>
             <input @keydown.enter="login()" v-model="loginForm.code" />
-            <img @click="getLoginCode()" id="login-code" src="?" />
+            <img
+              @click="getLoginCode(loginForm.email, 'login-code')"
+              id="login-code"
+              src="?"
+            />
           </div>
         </div>
         <div class="login">
@@ -45,32 +49,52 @@
         <div class="log-form">
           <div>
             <label>学号</label>
-            <input placeholder="12345556" />
+            <input placeholder="请输入学号" v-model="registered.number" />
           </div>
           <div>
             <label>邮箱</label>
-            <input placeholder="12345556" />
+            <input
+              placeholder="请输入邮箱"
+              @blur="getLoginCode(registered.email, 'registered-code')"
+              v-model="registered.email"
+            />
           </div>
           <div>
             <label>手机</label>
-            <input placeholder="12345556" />
+            <input placeholder="请输入手机号码" v-model="registered.phone" />
           </div>
           <div>
             <label>密码</label>
-            <input type="password" placeholder="12345556" />
+            <input
+              type="password"
+              v-model="registered.tmpPassword"
+              placeholder="请输入密码"
+            />
           </div>
           <div>
             <label>确认密码</label>
-            <input type="password" placeholder="12345556" />
+            <input
+              type="password"
+              v-model="registered.password"
+              placeholder="再次确认密码"
+            />
           </div>
           <div class="code">
             <label>验证码</label>
-            <input placeholder="12345556" />
-            <img src="?" />
+            <input
+              placeholder="先输入邮箱"
+              @keydown.enter="registeredCode()"
+              v-model="registered.code"
+            />
+            <img
+              src="?"
+              @click="getLoginCode(registered.email, 'registered-code')"
+              id="registered-code"
+            />
           </div>
         </div>
         <div class="login">
-          <div>确认注册</div>
+          <div @click="registeredCode()">确认注册</div>
           <div @click="htmlId = 1">返回登录</div>
         </div>
       </div>
@@ -78,24 +102,33 @@
         <p>密码找回</p>
         <div class="log-form">
           <div>
-            <label>注册账号</label>
-            <input placeholder="12345556" />
+            <label>注册邮箱</label>
+            <input placeholder="请输入邮箱" v-model="retrieve.email" />
           </div>
-          <div>
+          <div class="code">
             <label>验证码</label>
-            <input placeholder="12345556" />
+            <input placeholder="先输入邮箱" v-model="retrieve.code" />
+            <div id="code-clock" @click="sendVerify()">{{ clock }}</div>
           </div>
           <div>
             <label>新密码</label>
-            <input type="password" placeholder="12345556" />
+            <input
+              type="password"
+              placeholder="请输入密码"
+              v-model="retrieve.password"
+            />
           </div>
           <div>
             <label>确认密码</label>
-            <input type="password" placeholder="12345556" />
+            <input
+              type="password"
+              placeholder="请再次确认密码"
+              v-model="retrieve.newPassword"
+            />
           </div>
         </div>
         <div class="login">
-          <div>确认修改</div>
+          <div @click="retrieveCode()">确认修改</div>
           <div @click="htmlId = 1">返回登录</div>
         </div>
       </div>
@@ -113,11 +146,30 @@ export default {
         password: "",
         code: "",
       },
-      registered: {},
-      retrieve: {},
+      registered: {
+        number: "",
+        email: "",
+        tmpPassword: "",
+        password: "",
+        phone: "",
+        code: "",
+      },
+      retrieve: {
+        email: "",
+        password: "",
+        newPassword: "",
+        code: "",
+      },
+      clock: "发送验证码",
     };
   },
   methods: {
+    // 验证邮箱格式
+    isEmailValid(email) {
+      const reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+      return reg.test(email);
+    },
+    //登录axios
     login() {
       if (!this.loginForm.email) {
         this.$Message.error("请输入邮箱");
@@ -128,12 +180,20 @@ export default {
       } else if (!this.loginForm.code) {
         this.$Message.error("请输入验证码");
         return;
+      } else if (!this.isEmailValid(this.loginForm.email)) {
+        this.$Message.error("邮箱格式错误");
+        return;
       }
       let data = new FormData();
       data.append("email", this.loginForm.email);
       data.append("password", this.loginForm.password);
       data.append("code", this.loginForm.code);
-      this.$http.post(this.domain + "/../re", data).then((res) => {
+      const vmsg = this.$Message.loading({
+        content: "登录中...",
+        duration: 0,
+      });
+      this.$http.post(this.domain + "/user/lo", data).then((res) => {
+        setTimeout(vmsg, 0);
         if (res.data.code == 1) {
           this.$Message.success("登录成功！");
           setTimeout(() => {
@@ -144,18 +204,148 @@ export default {
         }
       });
     },
-    getLoginCode() {
-      let img = document.getElementById("login-code");
-      if (this.loginForm.email)
-        this.$http.post(this.domain + "/../drawCode").then((res) => {
-          if (res.data.code == 1) {
-            console.log(res.data);
-          } else {
+    //找密码axios
+    retrieveCode() {
+      if (this.retrieve.password != this.retrieve.newPassword) {
+        this.$Message.error("两次输入的密码不同");
+        return;
+      }
+      if (!this.retrieve.email) {
+        this.$Message.error("请输入邮箱");
+        return;
+      } else if (!this.retrieve.password) {
+        this.$Message.error("请输入密码");
+        return;
+      } else if (!this.registered.code) {
+        this.$Message.error("请输入验证码");
+        return;
+      } else if (!this.isEmailValid(this.registered.email)) {
+        this.$Message.error("邮箱格式错误");
+        return;
+      }
+      let data = new FormData();
+      data.append("email", this.retrieve.email);
+      data.append("tmpPassword", this.retrieve.password);
+      data.append("code", this.retrieve.code);
+      const vmsg = this.$Message.loading({
+        content: "修改中...",
+        duration: 0,
+      });
+      this.$http.post(this.domain + "/user/fp", data).then((res) => {
+        setTimeout(vmsg, 0);
+        if (res.data[0]) {
+          for (let i in res.data) this.$Message.error(res.data[i].errorMessage);
+        } else {
+          if (res.data.code == 0) {
             this.$Message.error(res.data.msg);
+          } else {
+            this.$Message.success("修改成功！");
           }
-        });
+        }
+      });
+    },
+    //注册axios
+    registeredCode() {
+      if (this.registered.password != this.registered.tmpPassword) {
+        this.$Message.error("两次输入的密码不同");
+        return;
+      }
+      if (!this.registered.number) {
+        this.$Message.error("请输入学号");
+        return;
+      } else if (!this.registered.email) {
+        this.$Message.error("请输入邮箱");
+        return;
+      } else if (!this.registered.password) {
+        this.$Message.error("请输入密码");
+        return;
+      } else if (!this.registered.phone) {
+        this.$Message.error("请输入电话");
+        return;
+      } else if (!this.registered.code) {
+        this.$Message.error("请输入验证码");
+        return;
+      } else if (!this.isEmailValid(this.registered.email)) {
+        this.$Message.error("邮箱格式错误");
+        return;
+      }
+      let data = new FormData();
+      data.append("number", this.registered.number);
+      data.append("email", this.registered.email);
+      data.append("tmpPassword", this.registered.tmpPassword);
+      data.append("phone", this.registered.phone);
+      data.append("code", this.registered.code);
+      const vmsg = this.$Message.loading({
+        content: "注册中...",
+        duration: 0,
+      });
+      this.$http.post(this.domain + "/user/re", data).then((res) => {
+        setTimeout(vmsg, 0);
+        if (res.data[0]) {
+          for (let i in res.data) this.$Message.error(res.data[i].errorMessage);
+        } else {
+          if (res.data.code == 0) {
+            this.$Message.error(res.data.msg);
+          } else {
+            this.$Message.success("注册成功！");
+          }
+        }
+      });
+    },
+    //获取验证码 email：邮箱 str：img的id
+    getLoginCode(email, str) {
+      let img = document.getElementById(str);
+      let data = new FormData();
+      data.append("email", email);
+      if (email)
+        this.$http
+          .post(this.domain + "/user/drawCode", data, {
+            responseType: "blob",
+          })
+          .then((res) => {
+            let blob = new Blob([res.data]);
+            img.src = window.URL.createObjectURL(blob);
+          });
       else {
         this.$Message.error("请先输入邮箱");
+      }
+    },
+    // 发送验证码
+    sendVerify() {
+      if (
+        this.isEmailValid(this.retrieve.email) &&
+        this.clock == "发送验证码"
+      ) {
+        this.clock = 120;
+        let btn = document.getElementById("code-clock");
+        btn.classList.add("active");
+        let timer = setInterval(() => {
+          this.clock -= 1;
+          if (this.clock == 0) {
+            this.clock = "发送验证码";
+            btn.classList.remove("active");
+            clearInterval(timer);
+          }
+        }, 1000);
+
+        let formdata = new FormData();
+        formdata.append("email", this.retrieve.email);
+        const vmsg = this.$Message.loading({
+          content: "发送中...",
+          duration: 0,
+        });
+        this.$http
+          .post(this.domain + "/user/getCode", formdata)
+          .then((res) => {
+            setTimeout(vmsg, 0);
+            this.$Message.success("验证码已发送，请查收(两分钟内有效)");
+          })
+          .catch((err) => {
+            setTimeout(vmsg, 0);
+            this.$Message.error("服务器连接失败");
+          });
+      } else {
+        this.$Message.warning("请检查邮箱格式");
       }
     },
   },
@@ -219,6 +409,26 @@ export default {
           }
           input {
             width: 110px;
+          }
+          div {
+            display: inline-block;
+            width: 84px;
+            padding: 4px 0;
+            height: 100%;
+            color: white;
+            background-color: #7ad3d6;
+            color: #868684;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            &:hover {
+              background-color: #3e999b;
+              color: white;
+            }
+            .active {
+              background-color: #3e999b;
+              color: white;
+            }
           }
           img {
             background-color: #585858;
