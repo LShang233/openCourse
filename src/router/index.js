@@ -18,6 +18,7 @@ import VideoLearn from '@/views/ClassResources/VideoLearn/VideoLearn'
 import ResourceDownload from '@/views/ClassResources/ResourceDownload/ResourceDownload'
 import ExtraStudy from '@/views/ClassResources/ExtraStudy/ExtraStudy'
 import Discuss from '@/views/ClassResources/Discuss/Discuss'
+import DiscussDetail from '@/views/ClassResources/Discuss/DiscussDetail/DiscussDetail'
 import ClassAssess from '@/views/ClassResources/ClassAssess/ClassAssess'
 
 Vue.use(Router)
@@ -69,7 +70,12 @@ export default new Router({
             {
               name: 'Discuss',
               path: 'Discuss',
-              component: Discuss
+              component: Discuss,
+            },
+            {
+              name: 'DiscussDetail',
+              path: 'DiscussDetail',
+              component: DiscussDetail
             },
             {
               name: 'ClassAssess',

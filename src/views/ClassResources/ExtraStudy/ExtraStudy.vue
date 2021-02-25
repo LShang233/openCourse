@@ -244,6 +244,7 @@ export default {
     align-items: center;
     height: 40px;
     li {
+      font-weight: 600;
       font-size: 18px;
       color: #585858;
     }
@@ -325,8 +326,7 @@ export default {
               color: #165d60;
               transition: all .2s;
 
-              &:hover,
-              &:visited {
+              &:hover {
                 background: #165d60;
                 color: #fff;
               }

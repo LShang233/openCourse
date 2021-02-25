@@ -207,6 +207,7 @@ export default {
       justify-content: flex-end;
 
       .icon {
+        margin-right: -25px;
         cursor: pointer;
       }
     }

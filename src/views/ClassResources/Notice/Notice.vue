@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import Calendar from '../../../components/Notice/Calendar/Calendar'
+import Calendar from '../../../components/ClassResource/Calendar/Calendar'
 export default {
   name: 'Notice',
   components:{
@@ -47,6 +47,7 @@ export default {
     align-items: center;
     height: 40px;
     li {
+      font-weight: 600;
       font-size: 18px;
       color: #585858;
     }

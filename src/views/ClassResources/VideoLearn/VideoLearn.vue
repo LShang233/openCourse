@@ -16,6 +16,7 @@
           class="video"
           @play="playVideo($event)"
           @pause="stopVideo($event)"
+          @loadedmetadata="prePlay($event)"
         ></video>
       </div>
       <a
@@ -27,7 +28,11 @@
     </div>
     <ul class="class_list">
       <li v-for="(item1, index1) in classesList" :key="index1">
-        <div @click="showDetail(index1)" class="class_title">
+        <div
+          @click="showDetail(index1)"
+          class="class_title"
+          :class="item1.rate == 100 ? 'class_done' : ''"
+        >
           <span> {{ item1.title }}</span>
           <i>{{ item1.rate }}%</i>
         </div>
@@ -77,6 +82,7 @@ export default {
             {
               id: -1,
               title: "C语言概述",
+              rate: 0, //观看进度
               video: "",
               videoId: 0,
               total: 0, //总时长
@@ -642,6 +648,16 @@ export default {
       mainTitle: "一、C语言概述",
       //副标题
       subtitle: "C语言概述",
+      //进度id
+      rateId: -1,
+      //视频进度
+      videoRate: 0,
+      //视频章节
+      videoChapter: 0,
+      //视频小章节
+      videoSChapter: 0,
+      //控制时间函数
+      timer: null,
     };
   },
   created() {
@@ -659,6 +675,9 @@ export default {
         this.subtitle = detail[0].title;
         this.mainTitle = title;
         this.work = work;
+        this.rateId = detail[0].id;
+        this.videoRate = detail[0].rate;
+        this.videoChapter = index;
       }
     },
 
@@ -669,18 +688,27 @@ export default {
       this.subtitle = detail[index2].title;
       this.mainTitle = title;
       this.work = work;
+      this.rateId = detail[index2].id;
+      this.videoRate = detail[index2].rate;
+      this.videoChapter = index1;
+      this.videoSChapter = index2;
     },
 
     //获取视频进度
     getVideoStatus() {
       let data = new FormData();
       data.append("userId", 8);
+      // data.append("userId", window.sessionStorage.getItem('userId')); //用户id
+      const loading = this.$Message.loading({
+        content: "Loading...",
+        duration: 0,
+      });
       // return;
       this.$http
         .post(this.domain + "/rate/sr", data)
         .then((res) => {
           console.log(res);
-          //
+
           let { code, data } = res.data;
           if (code === 1) {
             this.$Message.success("获取视频进度成功");
@@ -690,57 +718,128 @@ export default {
                 let len = this.classesList[i].detail.length;
                 for (let j = 0; j < len; j++) {
                   // console.log()
-                  if (
-                    this.classesList[i].detail[j].videoId == item.videoId
-                  ) {
+                  if (this.classesList[i].detail[j].videoId == item.videoId) {
+                    //进度id
                     this.classesList[i].detail[j].id = item.id;
-                    console.log('你好');
+                    //视频进度
+                    this.classesList[i].detail[j].rate = item.rate;
                     break;
                   }
                 }
               }
             });
 
-            console.log(this.classesList);
+            //渲染每个章节进度
+            let rate = 0;
+            for (let i = 0; i < this.classesList.length; i++) {
+              rate = 0;
+              let len = this.classesList[i].detail.length;
+              for (let j = 0; j < len; j++) {
+                //观看时长大于等于总时长
+                if (
+                  this.classesList[i].detail[j].rate >=
+                  this.classesList[i].detail[j].total
+                )
+                  this.classesList[i].detail[j].ifFinished = true;
+                //每个章节看完的视频累加
+                if (this.classesList[i].detail[j].ifFinished) rate++;
+              }
+              this.classesList[i].rate = Math.round((rate / len) * 100);
+            }
+
+            // console.log(this.classesList);
+          } else {
+            this.$Message.error("获取视频进度失败");
           }
         })
         .catch((err) => {
           console.log(err);
+          this.$Message.error("服务器连接失败");
+        })
+        .finally(() => {
+          setTimeout(loading, 0);
         });
     },
 
     //播放视频，发视频进度给后台并处理
     playVideo(e) {
       let video = e.target;
-      // console.log(Math.floor(video.duration));
       //以秒为单位
-      // video.currentTime = 120;
-      //30s发送一次进度给后台存储
-      return;
-      let timer = setInterval(() => {
-        // console.log();
-        this.updateVideo(rateId, video.currentTime);
+      // video.currentTime = this.videoRate;
+      let rateId = this.rateId;
+      // return;
+      //每30s发送一次进度给后台存储
+      this.timer = setInterval(() => {
+        //判断是否在当前页面
+        if (rateId != this.rateId) {
+          clearInterval(this.timer);
+          console.log("错误");
+          return false;
+        }
+        console.log("一直在动");
+        //更新前端的数据
+        for (let i = 0; i < this.classesList[i].length; i++) {
+          let len = this.classesList[i].detail.length;
+          for (let j = 0; j < len; j++) {
+            if (this.classesList[i].detail[j].id == this.rateId) {
+              if (video.currentTime >= video.duration) {
+                this.classesList[i].detail[j].rate = Math.floor(video.duration);
+              } else {
+                this.classesList[i].detail[j].rate = Math.floor(
+                  video.currentTime
+                );
+              }
+              break;
+            }
+          }
+        }
+        //视屏结束
+        if (video.currentTime >= video.duration) {
+          clearInterval(this.timer);
+          this.updateVideo(Math.floor(video.duration));
+          console.log("end");
+        } else {
+          //没结束时
+          this.updateVideo(Math.floor(video.currentTime));
+        }
       }, 30000);
-      if (video.end) {
-        clearInterval(timer);
-        this.updateVideo(rateId, Math.floor(video.duration));
-      }
     },
 
     //暂停视频
     stopVideo(e) {
       let video = e.target;
-      console.log(Math.floor(video.currentTime));
+      console.log(Math.floor(video.currentTime), "暂停视频");
       let rate = Math.floor(video.currentTime);
-      return;
+      // if(video.currentTime >= video.duration) {
+      //   this.classesList[this.videoChapter].detail[this.videoSChapter].ifFinished = true;
+      //   this.classesList[this.videoChapter].detail[this.videoSChapter].rate = Math.floor(video.duration);
+      //   this.classesList[this.videoChapter].rate = this.classesList[this.videoChapter].detail[this.videoSChapter].length;
+      
+      // }
+      //清除timer
+      clearInterval(this.timer);
       //更新视频进度
-      this.updateVideo(id, rate);
+      this.updateVideo(rate);
     },
 
+    //预加载
+    prePlay(e) {
+      let video = e.target;
+      //以秒为单位
+      video.currentTime = this.videoRate;
+    },
+
+    //一直播放视频 @timeupdate="stillPlay($event)"
+    /* stillPlay(e) {
+      return;
+      let video = e.target;
+      console.log(Math.floor(video.currentTime), "一直播放");
+    }, */
+
     //更新视频进度 id -- 进度id rate -- 进度
-    updateVideo(id, rate) {
+    updateVideo(rate) {
       let data = new FormData();
-      data.append("id", id);
+      data.append("id", this.rateId);
       data.append("rate", rate);
       this.$http
         .post(this.domain + "/rate/ur", data)

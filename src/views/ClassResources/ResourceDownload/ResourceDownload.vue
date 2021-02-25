@@ -48,6 +48,7 @@
             src="http://qgailab.com/course/static/pdf/1.8255401.pdf"
             width="100%"
             height="100%"
+            style="border:none"
           ></iframe>
         </div>
       </TabPane>
@@ -57,6 +58,7 @@
             src="http://qgailab.com/course/static/pdf/2.f849866.pdf"
             width="100%"
             height="100%"
+            style="border:none"
           ></iframe>
         </div>
       </TabPane>
@@ -188,7 +190,7 @@ export default {
       justify-content: space-between;
       flex-wrap: wrap;
       > li {
-        width: 180px;
+        width: 190px;
         margin: 5px;
         color: #fff;
         text-align: center;

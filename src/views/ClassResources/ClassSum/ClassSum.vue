@@ -109,6 +109,7 @@
             src="http://qgailab.com/course/static/pdf/1.9e2aa70.pdf"
             width="100%"
             height="100%"
+            style="border:none"
           ></iframe>
         </div>
       </TabPane>
