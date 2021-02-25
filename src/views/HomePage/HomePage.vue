@@ -3,14 +3,15 @@
     <div class="first_wrap">
       <div>
         <div class="left_wrap">
-          <p>程序设计<br/>精品资源共享网</p>
+          <p>程序设计<br />精品资源共享网</p>
           <div class="bottom_wrap">
-            <router-link to="/ClassResources"
-            >开始学习<br/>（课程资源-视频教学）</router-link
-          >
-          <a href="http://qgailab.com/anywork/html/login.html"
-            target="blank">在线测试<br/> 跳转anywork</a
-          >
+            <router-link to="/ClassResources/VideoLearn" 
+              >开始学习<br />（课程资源-视频教学）</router-link
+            >
+            <a href="http://qgailab.com/anywork/html/login.html" target="blank"
+              >在线测试<br />
+              跳转anywork</a
+            >
           </div>
         </div>
         <img class="home_pic" src="" alt="" />
@@ -176,9 +177,9 @@ export default {
     background: #fff;
     height: 400px;
 
-    >div {
+    > div {
       display: flex;
-      justify-content:space-between;
+      justify-content: space-between;
       height: 100%;
       width: 100%;
       max-width: 1300px;
@@ -191,8 +192,8 @@ export default {
       flex-direction: column;
 
       p {
-        flex: 2; 
-        background: #DCDDDB;
+        flex: 2;
+        background: #dcdddb;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -209,13 +210,12 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
-          background: #DCDDDB;
+          background: #dcdddb;
           &:last-child {
             margin-left: 10px;
           }
         }
       }
-
     }
 
     .home_pic {
@@ -223,7 +223,7 @@ export default {
       margin-left: 10px;
       // height: 100%;
       // width: 650px;
-      
+
       background: #eeeeee;
     }
   }

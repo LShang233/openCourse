@@ -16,7 +16,12 @@
   padding: 0;
   align-items: center;
   font-size: 18px;
+  font-weight: 600;
   color: #9E9E9E;
+
+  &:hover {
+    color: #585858;
+  }
 }
 
 #ClassSum .ivu-tabs-nav .ivu-tabs-tab-active {

@@ -1,18 +1,21 @@
 <template>
   <div id="ClassResources">
     <div class="class_wrap">
-      <ul class="left_nav">
-        <!-- 侧导航栏 -->
-        <li v-for="(item, index) in leftNav" :key="index">
-          <router-link
-            @click.native="changePanel(index)"
-            class="nav_item"
-            :class="index === panelIndex ? 'active' : ''"
-            :to="item.url"
-            >{{ item.name }}</router-link
-          >
-        </li>
-      </ul>
+      <div>
+        <ul class="left_nav">
+          <!-- 侧导航栏 -->
+          <li v-for="(item, index) in leftNav" :key="index">
+            <router-link
+              @click.native="changePanel(index)"
+              class="nav_item"
+              :class="index === panelIndex ? 'active' : ''"
+              :to="item.url"
+              >{{ item.name }}</router-link
+            >
+          </li>
+        </ul>
+      </div>
+
       <router-view class="main_content"></router-view>
     </div>
   </div>
@@ -63,6 +66,14 @@ export default {
       this.panelIndex = index;
     },
   },
+  created(){
+    // console.log(this.$route.name);
+    switch(this.$route.name){
+      case 'VideoLearn':
+        this.panelIndex = 2;
+        break;
+    }
+  }
 };
 </script>
 
@@ -74,21 +85,21 @@ export default {
   // justify-content: center;
 
   .class_wrap {
-    padding: 20px;
+    padding: 10px 0 20px;
     margin: 0 auto;
     width: 1200px;
     display: flex;
     // justify-content: center;
 
     .left_nav {
-      
       text-align: center;
-      margin-top: 40px;
+      margin-top: 44px;
       margin-bottom: 200px;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.16);
 
       li {
-        width: 200px;
-        background: #f8f8f8;
+        width: 180px;
+        background: #faf7fa;
 
         .nav_item {
           display: inline-block;
@@ -96,6 +107,7 @@ export default {
           padding: 10px 0;
           color: #868684;
           transition: all 0.1s;
+          font-weight: 600;
 
           &:hover,
           &.active {
@@ -108,7 +120,7 @@ export default {
 
     .main_content {
       margin-left: 20px;
-      width: calc(1200px - 260px);
+      width: calc(1200px - 200px);
     }
   }
 }

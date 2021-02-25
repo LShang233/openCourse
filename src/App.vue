@@ -23,4 +23,8 @@ ul,li {
 button,input {
   outline: none;
 }
+
+iframe {
+  border: none;
+}
 </style>
