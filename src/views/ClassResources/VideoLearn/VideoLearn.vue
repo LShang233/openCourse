@@ -697,8 +697,7 @@ export default {
     //获取视频进度
     getVideoStatus() {
       let data = new FormData();
-      data.append("userId", 8);
-      // data.append("userId", window.sessionStorage.getItem('userId')); //用户id
+      data.append("userId", window.sessionStorage.getItem('userId')); //用户id
       const loading = this.$Message.loading({
         content: "Loading...",
         duration: 0,
@@ -754,6 +753,9 @@ export default {
         })
         .catch((err) => {
           console.log(err);
+          if(!window.sessionStorage.getItem('userId')) {
+            this.$Message.info('登录获取观看进度');
+          } else 
           this.$Message.error("服务器连接失败");
         })
         .finally(() => {
@@ -826,7 +828,7 @@ export default {
     prePlay(e) {
       let video = e.target;
       //以秒为单位
-      video.currentTime = this.videoRate;
+      video.currentTime = this.videoRate || 0;
     },
 
     //一直播放视频 @timeupdate="stillPlay($event)"
@@ -838,6 +840,8 @@ export default {
 
     //更新视频进度 id -- 进度id rate -- 进度
     updateVideo(rate) {
+      //无登录时不更新视频进度
+      if(!this.rateId) return;
       let data = new FormData();
       data.append("id", this.rateId);
       data.append("rate", rate);

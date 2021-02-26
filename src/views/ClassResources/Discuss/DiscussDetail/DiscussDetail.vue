@@ -102,8 +102,8 @@ export default {
       let data = new FormData();
       data.append("commentId", id);
       data.append("flag", star ? 1 : 0);
-      // data.append("userId", window.sessionStorage.getItem('userId')); //用户id
-      data.append("userId", 8);
+      data.append("userId", window.sessionStorage.getItem('userId')); //用户id
+
       this.$http
         .post(this.domain + "/discuss/star", data)
         .then((res) => {
@@ -131,6 +131,10 @@ export default {
 
     //加载图片
     loadPic(e) {
+      if(!window.sessionStorage.getItem('userId')) {
+        this.$Message.error('请先登录');
+        return ;
+      }
       let imgFile = e.target;
       //获取所需文件
       let file = imgFile.files[0];
@@ -168,7 +172,7 @@ export default {
           if (code == 1) {
             //图片上传成功
             this.$Message.success("图片上传成功");
-            this.discussContent += `<img style="max-width:400px" src="${msg}"/>`;
+            this.commentContent += `<img style="max-width:400px" src="${msg}"/>`;
           } else {
             //上传失败
             this.$Message.error("图片上传失败");
@@ -184,6 +188,11 @@ export default {
 
     //发表回复
     handleComment() {
+      const uId = window.sessionStorage.getItem('userId');
+      if(!uId) {
+        this.$Message.error('请先登录');
+        return false;
+      }
       if (!this.commentContent) {
         this.$Message.error("请输入内容");
         return false;
@@ -201,8 +210,7 @@ export default {
       let data = new FormData();
       data.append("content", this.commentContent);
       data.append("discussId", this.discuss.id);
-      // data.append("userId", window.sessionStorage.getItem('userId')); //用户id
-      data.append("userId", 8); //用户id
+      data.append("userId", uId); //用户id
       this.$http
         .post(this.domain + "/discuss/pc", data)
         .then((res) => {
@@ -235,8 +243,8 @@ export default {
       data.append("pageNum", pageNum);
       data.append("pageSize", 15); //每15条数据一页
       data.append("discussId", this.discuss.id);
-      data.append("userId", 8); //用户id
-      // data.append("userId", window.sessionStorage.getItem('userId')); //用户id
+
+      data.append("userId", window.sessionStorage.getItem('userId')); //用户id
       this.$http
         .post(this.domain + "/discuss/sc", data)
         .then((res) => {

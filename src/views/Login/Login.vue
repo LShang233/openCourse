@@ -2,8 +2,8 @@
   <div class="log-main">
     <div>
       <div class="log-logo">
-        <img src="./../../assets/login.png" />
-        <img src="./../../assets/logo.png" />
+        <img src="./../../assets/images/login.png" />
+        <img src="./../../assets/images/logo.png" />
       </div>
       <div class="login-div" v-if="htmlId == 1">
         <p>账号登录</p>
@@ -193,9 +193,13 @@ export default {
         duration: 0,
       });
       this.$http.post(this.domain + "/user/lo", data).then((res) => {
+        console.log(res);
         setTimeout(vmsg, 0);
+        const {data} = res.data;
         if (res.data.code == 1) {
           this.$Message.success("登录成功！");
+          window.sessionStorage.setItem('userId',data.id);
+          window.sessionStorage.setItem('userNumber',data.number);
           setTimeout(() => {
             this.$router.push({ path: "/HomePage" });
           }, 500);

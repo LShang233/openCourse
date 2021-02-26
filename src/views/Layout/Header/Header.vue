@@ -9,17 +9,23 @@
             <router-link class="nav_item" to="/HomePage">首页</router-link>
           </li>
           <li @click="handleChange(1)">
-            <router-link class="nav_item" to="/ClassResources">课程资源</router-link>
+            <router-link class="nav_item" to="/ClassResources"
+              >课程资源</router-link
+            >
           </li>
           <li @click="handleChange(2)">
             <router-link class="nav_item" to="/AboutUs">关于我们</router-link>
           </li>
         </ul>
       </div>
-      <div class="login-wrap">
+      <div class="login-wrap" v-show="!userNumber">
         <router-link class="login-item" to="/Login">登录</router-link>
         |
         <router-link class="login-item" to="/Login">注册</router-link>
+      </div>
+      <div class="login-wrap" v-show="userNumber">
+        <span>学号 {{ userNumber }} 用户,你好</span>
+        <span class="login-item" @click="handleExit()">退出</span>
       </div>
     </div>
   </div>
@@ -29,7 +35,9 @@
 export default {
   name: "Header",
   data() {
-    return {};
+    return {
+      userNumber: "",
+    };
   },
   methods: {
     handleChange(numb) {
@@ -42,6 +50,23 @@ export default {
       //添加样式，分清进入哪个模块
       list[numb].classList.add("active");
     },
+
+    //用户退出
+    handleExit() {
+      this.$Modal.confirm({
+        title: "退出登录？",
+        onOk: () => {
+          //清楚缓存中数据
+          this.userNumber = "";
+          window.sessionStorage.removeItem("userId");
+          window.sessionStorage.removeItem("userNumber");
+          this.$Message.success("已退出登录");
+        },
+      });
+    },
+  },
+  created() {
+    this.userNumber = window.sessionStorage.getItem("userNumber");
   },
 };
 </script>
@@ -68,8 +93,13 @@ export default {
       height: 100%;
 
       h1 {
+        height: 60%;
+        text-indent: -2000px;
+        width: 300px;
         font-size: 18px;
         color: #4e4e4e;
+        background: url("../../../assets/images/logo.png") no-repeat;
+        background-size: 100% 100%;
       }
 
       ul {
@@ -111,10 +141,22 @@ export default {
     }
 
     .login-wrap {
+      color: #25787b;
       .login-item {
         color: #25787b;
         margin: 0 5px;
         text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+          text-decoration: underline;
+        }
+      }
+
+      span {
+        color: #fff;
+        margin: 0 30px;
       }
     }
   }

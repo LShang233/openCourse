@@ -83,6 +83,10 @@ export default {
   methods: {
     //加载图片
     loadPic(e) {
+      if(!window.sessionStorage.getItem('userId')) {
+        this.$Message.error('请先登录');
+        return ;
+      }
       let imgFile = e.target;
       //获取所需文件
       let file = imgFile.files[0];
@@ -136,6 +140,10 @@ export default {
     },
     //到讨论回复区
     goDetaill(index) {
+      if(!window.sessionStorage.getItem('userId')) {
+        this.$Message.error('请先登录');
+        return ;
+      }
       // this.$router.push("/ClassResources/DiscussDetail");
       this.$router.push({
         path: "/ClassResources/DiscussDetail",
@@ -146,6 +154,11 @@ export default {
     },
     //发表讨论
     handleDiscuss() {
+      const uId = window.sessionStorage.getItem('userId');
+      if(!uId) {
+        this.$Message.error('请先登录');
+        return false;
+      }
       if (!this.discussContent) {
         this.$Message.error("请输入内容");
         return false;
@@ -161,8 +174,8 @@ export default {
       //发表主题
       let data = new FormData();
       data.append("content", this.discussContent.trim());
-      // data.append("userId", window.sessionStorage.getItem('userId')); //用户id
-      data.append("uId", 8); //用户id
+      data.append("uId", uId); //用户id
+      // data.append("uId", 8); //用户id
       this.$http
         .post(this.domain + "/discuss/pd", data)
         .then((res) => {

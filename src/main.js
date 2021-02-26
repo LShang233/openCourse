@@ -13,7 +13,7 @@ Vue.use(iView)
 // Vue.use(ViewUI);
 
 Vue.prototype.$http = axios;
-Vue.prototype.domain = "http://39.98.41.126:30004"
+Vue.prototype.domain = "http://119.3.228.123/classes"
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
