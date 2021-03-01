@@ -15,7 +15,6 @@
           </li>
         </ul>
       </div>
-
       <router-view class="main_content"></router-view>
     </div>
   </div>
@@ -83,6 +82,8 @@ export default {
   // width: 1200px;
   // display: flex;
   // justify-content: center;
+  min-height: calc(100vh - 100px);
+
 
   .class_wrap {
     padding: 10px 0 20px;

@@ -3,18 +3,27 @@
     <div class="first_wrap">
       <div>
         <div class="left_wrap">
-          <p>程序设计<br />精品资源共享网</p>
+          <div class="top_wrap">
+            <h2>THE HIGH-QUALITY<br />PROGRAMMMING COURSE</h2>
+             
+            <h2 class="main_title">程序设计<br />精品资源共享网</h2>
+          </div>
           <div class="bottom_wrap">
-            <router-link to="/ClassResources/VideoLearn" 
-              >开始学习<br />（课程资源-视频教学）</router-link
-            >
+            <router-link to="/ClassResources/VideoLearn"
+              >开始学习 <img src="../../assets/images/mingshifudao.png" alt=""
+            /></router-link>
             <a href="http://qgailab.com/anywork/html/login.html" target="blank"
-              >在线测试<br />
-              跳转anywork</a
-            >
+              >在线测试<img
+                src="../../assets/images/xueqianzhenduan.png"
+                alt=""
+            /></a>
           </div>
         </div>
-        <img class="home_pic" src="" alt="" />
+        <img
+          class="home_pic"
+          src="../../assets/images/support-team.png"
+          alt=""
+        />
       </div>
     </div>
     <div class="class_info">
@@ -26,56 +35,32 @@
         <p>
           我们在多年讲授和使用编程的基础上，深切感受到学习程序设计不仅要掌握的语法要点和编程规范，更重要的是要领会结构化程序设计思想，综合运用知识开发大型程序，为此，我们在原有讲授的基础上，增加了“软件开发过程的内容”，希望通过程序设计，用一个较大规范的实例掌握运用软件工程的思想进行程序开发的一般过程。
         </p>
-        <img src="../../assets/images/support-team.png" alt="" class="pic1" />
+        <img src="../../assets/images/shizibaozhang.png" alt="" class="pic1" />
       </div>
     </div>
     <div class="union_school">
       <h3>联盟高校</h3>
       <div class="union_list">
-        <img src="../../assets/images/remote-team.png" alt="" class="pic2" />
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业科技大学大学</p>
+        <img
+          src="../../assets/images/mingxiaomingshi.png"
+          alt=""
+          class="pic2"
+        />
+        <div
+          class="union_item"
+          v-for="(item, index) in unionSchool"
+          :key="index"
+        >
+          <img :src="item.pic" alt="" />
+          <p>{{ item.name }}</p>
         </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>海洋科技飞空分类算法老师大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">点击查看完整名单 >></div>
+        <!-- <div class="union_item">点击查看完整名单 >></div> -->
       </div>
     </div>
     <div class="teacher_teams">
       <h3>教师团队</h3>
       <div class="teacher_list">
-        <img src="../../assets/images/awards.png" alt="" class="pic3" />
+        <img src="../../assets/images/shizililiang.png" alt="" class="pic3" />
         <div
           class="teacher_item"
           v-for="(item, index) in teacherTeam"
@@ -145,6 +130,28 @@ export default {
           avatar: "http://qgailab.com/course/static/img/lu.b03aa5f.jpg",
         },
       ],
+      unionSchool: [
+        {
+          name: "广东工业大学",
+          pic: require("../../assets/teacherstyle/school/gdut.png"),
+        },
+        {
+          name: "中山大学",
+          pic: require("../../assets/teacherstyle/school/zsdx.png"),
+        },
+        {
+          name: "深圳大学",
+          pic: require("../../assets/teacherstyle/school/szdx.png"),
+        },
+        {
+          name: "岭南师范学院",
+          pic: require("../../assets/teacherstyle/school/lnsfdx.png"),
+        },
+        {
+          name: "仲恺农业工程学院",
+          pic: require("../../assets/teacherstyle/school/zknxy.png"),
+        },
+      ],
     };
   },
   methods: {},
@@ -170,7 +177,7 @@ export default {
   }
 
   .first_wrap {
-    padding: 50px 120px;
+    padding: 50px 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,22 +188,31 @@ export default {
       display: flex;
       justify-content: space-between;
       height: 100%;
-      width: 100%;
       max-width: 1300px;
-      min-width: 500px;
+      min-width: 600px;
     }
 
     .left_wrap {
       flex: 1;
       display: flex;
       flex-direction: column;
+      padding: 50px 0;
 
-      p {
-        flex: 2;
-        background: #dcdddb;
+      .top_wrap {
+        margin-left: 20px;
+        flex: 2.5;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        // align-items: center;
         justify-content: center;
+
+        h2 {
+          text-align: left;
+          font-size: 20px;
+          &.main_title {
+            font-size: 28px;
+          }
+        }
       }
 
       .bottom_wrap {
@@ -208,11 +224,25 @@ export default {
         a {
           flex: 1;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
-          background: #dcdddb;
+          background: #ff7a50;
+          font-size: 16px;
+          font-weight: 600;
+          color: #fff;
+          border-radius: 8px;
+          padding: 0 15px;
+          box-sizing: border-box;
+
           &:last-child {
             margin-left: 10px;
+            background: #50eeff;
+          }
+
+          img {
+            margin-left: 10px;
+            width: 25px;
+            height: 25px;
           }
         }
       }
@@ -221,10 +251,6 @@ export default {
     .home_pic {
       flex: 1.5;
       margin-left: 10px;
-      // height: 100%;
-      // width: 650px;
-
-      background: #eeeeee;
     }
   }
 
@@ -244,15 +270,17 @@ export default {
 
       p {
         text-indent: 32px;
+        z-index: 1;
       }
 
       .pic1 {
         position: absolute;
         top: 0;
         right: 0;
-        width: 200px;
-        height: 200px;
-        transform: translate(50%, -50%);
+        width: 300px;
+        height: 300px;
+        z-index: 0;
+        transform: translate(50%, -25%);
       }
     }
   }
@@ -275,9 +303,10 @@ export default {
         position: absolute;
         top: 0;
         left: 0;
-        width: 200px;
-        height: 200px;
-        transform: translate(0, -100%);
+        width: 300px;
+        height: 300px;
+        transform: translate(-50%, -40%);
+        z-index: 0;
       }
 
       .union_item {
@@ -286,13 +315,14 @@ export default {
         align-items: center;
         background: #fff;
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.16);
-        border-radius: 2px;
+        border-radius: 3px;
         padding: 7px;
+        z-index: 1;
         margin: 7px 3px;
 
         img {
-          width: 50px;
-          height: 50px;
+          width: 44px;
+          height: 44px;
           background: #868684;
         }
 
@@ -301,6 +331,8 @@ export default {
           display: flex;
           align-items: center;
           justify-content: center;
+          font-size: 14px;
+          font-weight: 600;
           width: 120px;
           height: 50px;
           overflow: auto;
@@ -309,16 +341,16 @@ export default {
           }
         }
 
-        &:last-child {
-          color: #3b888b;
-          background: #e1f3f5;
-          font-weight: bold;
-          width: 189px;
-          height: 64px;
-          justify-content: center;
-          box-shadow: none;
-          cursor: pointer;
-        }
+        // &:last-child {
+        //   color: #3b888b;
+        //   background: #e1f3f5;
+        //   font-weight: bold;
+        //   width: 189px;
+        //   height: 64px;
+        //   justify-content: center;
+        //   box-shadow: none;
+        //   cursor: pointer;
+        // }
       }
     }
   }
@@ -343,9 +375,10 @@ export default {
         position: absolute;
         top: 0;
         right: 0;
-        width: 200px;
-        height: 200px;
-        transform: translate(30%, -100%);
+        width: 400px;
+        height: 400px;
+        z-index: 0;
+        transform: translate(60%, -15%);
       }
 
       .teacher_item {
@@ -357,6 +390,7 @@ export default {
         overflow: auto;
         border-radius: 3px;
         border: 1px solid #eee;
+        z-index: 1;
 
         &::-webkit-scrollbar {
           width: 0;

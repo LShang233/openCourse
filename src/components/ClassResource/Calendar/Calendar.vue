@@ -235,6 +235,7 @@ export default {
         &.arrow {
           padding: 15px;
           color: #999999;
+          cursor: pointer;
         }
       }
     }
