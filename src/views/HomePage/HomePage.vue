@@ -54,7 +54,6 @@
           <img :src="item.pic" alt="" />
           <p>{{ item.name }}</p>
         </div>
-        <!-- <div class="union_item">点击查看完整名单 >></div> -->
       </div>
     </div>
     <div class="teacher_teams">
