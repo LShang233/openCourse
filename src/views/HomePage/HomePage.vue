@@ -34,42 +34,25 @@
       <div class="union_list">
         <img src="../../assets/images/remote-team.png" alt="" class="pic2" />
         <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业科技大学大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>海洋科技飞空分类算法老师大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
+          <img src="../../assets/teacherstyle/school/gdut.png" alt="" />
           <p>广东工业大学</p>
         </div>
         <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
+          <img src="../../assets/teacherstyle/school/zsdx.png" alt="" />
+          <p>中山大学</p>
         </div>
         <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
+          <img src="../../assets/teacherstyle/school/szdx.png" alt="" />
+          <p>深圳大学</p>
         </div>
         <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
+          <img src="../../assets/teacherstyle/school/lnsfdx.png" alt="" />
+          <p>岭南师范学院</p>
         </div>
         <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
+          <img src="../../assets/teacherstyle/school/zknxy.png" alt="" />
+          <p>仲恺农业工程学院</p>
         </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">
-          <img src="" alt="" />
-          <p>广东工业大学</p>
-        </div>
-        <div class="union_item">点击查看完整名单 >></div>
       </div>
     </div>
     <div class="teacher_teams">

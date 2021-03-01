@@ -3,7 +3,7 @@
     <p>申报书详情</p>
     <div>
       <iframe
-        src="../../../static/pdf/2.edfe5da.pdf"
+        src="http://qgailab.com/course/static/pdf/2.edfe5da.pdf"
         width="100%"
         height="100%"
       ></iframe>
