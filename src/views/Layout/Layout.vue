@@ -26,6 +26,7 @@ export default {
 #Layout {
   .content {
     padding-top: 80px;
+    min-height: calc(100vh - 100px);
   }
 }
 </style>

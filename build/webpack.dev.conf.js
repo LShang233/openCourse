@@ -47,7 +47,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env'),
-      'process.env.VUE_ENV': JSON.stringify(process.env.VUE_ENV) //增加此行,把传入的src地址转成json字符串的格式
+      // 'process.env.VUE_ENV': JSON.stringify(process.env.VUE_ENV) //增加此行,把传入的src地址转成json字符串的格式
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.

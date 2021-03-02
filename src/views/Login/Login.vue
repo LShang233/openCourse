@@ -7,10 +7,6 @@
       </div>
       <div class="login-div" v-if="htmlId == 1">
         <p>账号登录</p>
-        <!-- <div class="log-buttom">
-          <div>学生端</div>
-          <div>教师端</div>
-        </div> -->
         <div class="log-form">
           <div>
             <label>邮箱</label>
@@ -30,11 +26,15 @@
           </div>
           <div class="code">
             <label>验证码</label>
-            <input @keydown.enter="login()" v-model="loginForm.code" />
+            <input
+              @keydown.enter="login()"
+              v-model="loginForm.code"
+              placeholder="请先输入邮箱"
+            />
             <img
               @click="getLoginCode(loginForm.email, 'login-code')"
               id="login-code"
-              src="?"
+              src="./../../assets/bg.jpg"
             />
           </div>
         </div>
@@ -87,7 +87,7 @@
               v-model="registered.code"
             />
             <img
-              src="?"
+              src="./../../assets/bg.jpg"
               @click="getLoginCode(registered.email, 'registered-code')"
               id="registered-code"
             />
@@ -195,15 +195,16 @@ export default {
       this.$http.post(this.domain + "/user/lo", data).then((res) => {
         console.log(res);
         setTimeout(vmsg, 0);
-        const {data} = res.data;
+        const { data } = res.data;
         if (res.data.code == 1) {
           this.$Message.success("登录成功！");
-          window.sessionStorage.setItem('userId',data.id);
-          window.sessionStorage.setItem('userNumber',data.number);
+          window.sessionStorage.setItem("userId", data.id);
+          window.sessionStorage.setItem("userNumber", data.number);
           setTimeout(() => {
             this.$router.push({ path: "/HomePage" });
           }, 500);
         } else {
+          this.getLoginCode(loginForm.email, "login-code");
           this.$Message.info(res.data.msg);
         }
       });
@@ -220,16 +221,16 @@ export default {
       } else if (!this.retrieve.password) {
         this.$Message.error("请输入密码");
         return;
-      } else if (!this.registered.code) {
+      } else if (!this.retrieve.code) {
         this.$Message.error("请输入验证码");
         return;
-      } else if (!this.isEmailValid(this.registered.email)) {
+      } else if (!this.isEmailValid(this.retrieve.email)) {
         this.$Message.error("邮箱格式错误");
         return;
       }
       let data = new FormData();
       data.append("email", this.retrieve.email);
-      data.append("tmpPassword", this.retrieve.password);
+      data.append("password", this.retrieve.password);
       data.append("code", this.retrieve.code);
       const vmsg = this.$Message.loading({
         content: "修改中...",
@@ -242,6 +243,7 @@ export default {
         } else {
           if (res.data.code == 0) {
             this.$Message.error(res.data.msg);
+            this.clock == "发送验证码";
           } else {
             this.$Message.success("修改成功！");
           }
@@ -299,6 +301,11 @@ export default {
     //获取验证码 email：邮箱 str：img的id
     getLoginCode(email, str) {
       let img = document.getElementById(str);
+      if (!this.isEmailValid(email)) {
+        this.$Message.error("请输入正确邮箱！");
+        img.src = require("./../../assets/bg.jpg");
+        return;
+      }
       let data = new FormData();
       data.append("email", email);
       if (email)
@@ -311,7 +318,9 @@ export default {
             img.src = window.URL.createObjectURL(blob);
           });
       else {
-        this.$Message.error("请先输入邮箱");
+        img.src = "./../../assets/bg.jpg";
+        img.src = require("./../../assets/bg.jpg");
+        this.$Message.error("请输入正确邮箱");
       }
     },
     // 发送验证码
@@ -495,6 +504,9 @@ export default {
           border-bottom: 1px solid #3b888b;
         }
       }
+    }
+    #code-clock {
+      color: white;
     }
     .log-logo {
       width: 35%;
