@@ -167,12 +167,12 @@ export default {
 
   h3 {
     display: inline-block;
-    padding: 12px 60px;
+    padding: 12px 30px;
     margin-bottom: 30px;
     margin-top: 40px;
     font-size: 18px;
     color: #585858;
-    background: #7ad3d6;
+    border-bottom:5px solid #7ad3d6;
   }
 
   .first_wrap {

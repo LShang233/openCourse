@@ -653,9 +653,9 @@ export default {
       //视频进度
       videoRate: 0,
       //视频章节
-      videoChapter: 0,
+      videoChapterIndex: 0,
       //视频小章节
-      videoSChapter: 0,
+      videoSChapterIndex: 0,
       //控制时间函数
       timer: null,
     };
@@ -677,7 +677,7 @@ export default {
         this.work = work;
         this.rateId = detail[0].id;
         this.videoRate = detail[0].rate;
-        this.videoChapter = index;
+        this.videoChapterIndex = index;
       }
     },
 
@@ -690,8 +690,8 @@ export default {
       this.work = work;
       this.rateId = detail[index2].id;
       this.videoRate = detail[index2].rate;
-      this.videoChapter = index1;
-      this.videoSChapter = index2;
+      this.videoChapterIndex = index1;
+      this.videoSChapterIndex = index2;
     },
 
     //获取视频进度
@@ -813,9 +813,9 @@ export default {
       console.log(Math.floor(video.currentTime), "暂停视频");
       let rate = Math.floor(video.currentTime);
       // if(video.currentTime >= video.duration) {
-      //   this.classesList[this.videoChapter].detail[this.videoSChapter].ifFinished = true;
-      //   this.classesList[this.videoChapter].detail[this.videoSChapter].rate = Math.floor(video.duration);
-      //   this.classesList[this.videoChapter].rate = this.classesList[this.videoChapter].detail[this.videoSChapter].length;
+      //   this.classesList[this.videoChapterIndex].detail[this.videoSChapterIndex].ifFinished = true;
+      //   this.classesList[this.videoChapterIndex].detail[this.videoSChapterIndex].rate = Math.floor(video.duration);
+      //   this.classesList[this.videoChapterIndex].rate = this.classesList[this.videoChapterIndex].detail[this.videoSChapterIndex].length;
       
       // }
       //清除timer
