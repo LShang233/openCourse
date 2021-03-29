@@ -5,7 +5,7 @@
         <div class="left_wrap">
           <div class="top_wrap">
             <h2>THE FOUNDATION OF<br />PROGRAMMING DESIGN</h2>
-             
+
             <h2 class="main_title">广东省在线开放课程<br />程序设计基础</h2>
           </div>
           <div class="bottom_wrap">
@@ -60,13 +60,23 @@
       <h3>高效联盟</h3>
       <div class="teacher_list">
         <img src="../../assets/images/shizililiang.png" alt="" class="pic3" />
-        <div
-          class="teacher_item"
-          v-for="(item, index) in teacherTeam"
-          :key="index"
-        >
-          <img :src="item.avatar" alt="" />
-          <p>{{ item.name }}</p>
+        <div class="teacher_item" v-for="(item,index) in teacherTeam" :key="index">
+          <div class="img_wrap">
+            <img
+              class="teacher_pic"
+              :src="item.avatar"
+              alt=""
+            />
+            <img
+              class="school_pic"
+              :src="item.pic"
+              alt=""
+            />
+          </div>
+          <div class="man">
+            课程负责人
+            <p>{{item.name}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -83,67 +93,28 @@ export default {
         {
           name: "谢光强",
           avatar: require("../../assets/teacherstyle/head/xie.2730c8e.png"),
+          pic: require("../../assets/teacherstyle/school/gdut.png"),
         },
         {
-          name: '万海',
-          avatar: require('../../assets/teacherstyle/head/wan.png')
+          name: "万海",
+          pic: require("../../assets/teacherstyle/school/zsdx.png"),
+          avatar: require("../../assets/teacherstyle/head/wan.png"),
         },
         {
-          name: '杨艳丽',
-          avatar: require('../../assets/teacherstyle/head/yyl.png')
+          name: "杨艳丽",
+          pic: require("../../assets/teacherstyle/school/szdx.png"),
+          avatar: require("../../assets/teacherstyle/head/yyl.png"),
         },
         {
-          name: '吴涛',
-          avatar: require('../../assets/teacherstyle/head/wu.jpg')
+          name: "吴涛",
+          pic: require("../../assets/teacherstyle/school/lnsfdx.png"),
+          avatar: require("../../assets/teacherstyle/head/wu.jpg"),
         },
         {
-          name: '徐龙琴',
-          avatar: require('../../assets/teacherstyle/head/xu.png')
+          name: "徐龙琴",
+          pic: require("../../assets/teacherstyle/school/zknxy.png"),
+          avatar: require("../../assets/teacherstyle/head/xu.png"),
         },
-        // {
-        //   name: "吴伟民",
-        //   avatar: "http://qgailab.com/course/static/img/wu.8919f53.png",
-        // },
-        // {
-        //   name: "曾安",
-        //   avatar: "http://qgailab.com/course/static/img/an.e2db41f.png",
-        // },
-        // {
-        //   name: "谢国波",
-        //   avatar: "http://qgailab.com/course/static/img/bo.61a80ac.png",
-        // },
-        // {
-        //   name: "林伟",
-        //   avatar: "http://qgailab.com/course/static/img/wei.d6be8f3.png",
-        // },
-        // {
-        //   name: "李杨",
-        //   avatar: "http://qgailab.com/img/6.d44330b8.png",
-        // },
-        // {
-        //   name: "朱清华",
-        //   avatar: "http://qgailab.com/course/static/img/zhu.30b1e6a.png",
-        // },
-        // {
-        //   name: "陈云华",
-        //   avatar: "http://qgailab.com/course/static/img/chen.1961b0c.png",
-        // },
-        // {
-        //   name: "曾颖",
-        //   avatar: "http://qgailab.com/course/static/img/ying.f8cd54b.jpg",
-        // },
-        // {
-        //   name: "孙宣东",
-        //   avatar: "http://qgailab.com/course/static/img/xuan.d808a03.jpg",
-        // },
-        // {
-        //   name: "汪明慧",
-        //   avatar: "http://qgailab.com/course/static/img/hui.4ced16d.jpg",
-        // },
-        // {
-        //   name: "路璐",
-        //   avatar: "http://qgailab.com/course/static/img/lu.b03aa5f.jpg",
-        // },
       ],
       unionSchool: [
         {
@@ -188,7 +159,7 @@ export default {
     margin-top: 40px;
     font-size: 18px;
     color: #585858;
-    border-bottom:5px solid #7ad3d6;
+    border-bottom: 5px solid #7ad3d6;
   }
 
   .first_wrap {
@@ -375,15 +346,15 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: 120px;
-    padding-bottom: 80px;
+    padding-bottom: 150px;
 
     .teacher_list {
       position: relative;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px 20px;
+      // padding: 10px 20px 20px;
       width: 1000px;
 
       .pic3 {
@@ -397,13 +368,13 @@ export default {
       }
 
       .teacher_item {
-        padding: 10px;
-        margin: 10px 20px;
-        width: 120px;
-        height: 170px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 10px;
+        margin: 7px 3px;
         background: #fff;
-        overflow: auto;
-        border-radius: 3px;
+        border-radius: 5px;
         border: 1px solid #eee;
         z-index: 1;
 
@@ -411,13 +382,32 @@ export default {
           width: 0;
         }
 
-        img {
-          height: 120px;
-          width: 100%;
+        .img_wrap {
+          position: relative;
+
+          .teacher_pic {
+            height: 140px;
+            width: 100px;
+            vertical-align: middle;
+            border-radius: 5px 5px 0 5px;
+          }
+
+          .school_pic {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px 0 0 0;
+          }
+        }
+
+        .man {
+          margin-left: 5px;
         }
 
         p {
-          width: 100%;
+          margin-top: 5px;
           font-size: 16px;
           font-weight: 600;
         }
