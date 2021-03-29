@@ -13,7 +13,7 @@ Vue.use(iView)
 // Vue.use(ViewUI);
 
 Vue.prototype.$http = axios;
-Vue.prototype.domain = "http://119.3.228.123/classes"
+Vue.prototype.domain = "http://qgailab.com/classes"
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

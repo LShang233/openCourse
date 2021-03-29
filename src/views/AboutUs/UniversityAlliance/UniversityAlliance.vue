@@ -24,7 +24,7 @@
           <span>仲恺农业工程学院</span>
         </div>
       </div>
-      <p>骨干教师</p>
+      <p>课程负责人</p>
       <div class="teacher-cards">
         <TeacherCard
           :src="require('./../../../assets/teacherstyle/head/xie.jpg')"
@@ -33,31 +33,34 @@
           :main="'人工智能、无人驾驶、数据挖掘'"
           @click.native="toPage(0)"
         />
+      </div>
+      <p>高校负责人</p>
+      <div class="teacher-cards">
         <TeacherCard
           :src="require('./../../../assets/teacherstyle/head/wan.png')"
           :name="'万海'"
           :content="'中山大学数据科学与计算机学院\n博士，副教授，硕士生导师'"
-          :main="'表示与推理、回答集编程、场景图谱、可满足性问题、组合优化问题'"
+          :main="'KR、ASP、SG、SAT、COP理论研究'"
           @click.native="toPage(1)"
         />
         <TeacherCard
           :src="require('./../../../assets/teacherstyle/head/yyl.png')"
           :name="'杨艳丽'"
-          :content="'深圳大学计算机与软件学院《程序设计基础》课程组负责人\n博士，副教授，硕士生导师'"
+          :content="'深圳大学计算机与软件学院\n博士，副教授，硕士生导师'"
           :main="'人工智能、智能控制'"
           @click.native="toPage(2)"
         />
         <TeacherCard
           :src="require('./../../../assets/teacherstyle/head/wu.jpg')"
           :name="'吴涛'"
-          :content="'岭南师范学院教学发展与质量测评中心主任\n博士，教授'"
+          :content="'岭南师范学院教学发展与质量测评中心主任，博士，教授'"
           :main="'计算机图形图像学、教育信息技术及其应用'"
           @click.native="toPage(3)"
         />
         <TeacherCard
           :src="require('./../../../assets/teacherstyle/head/xu.png')"
           :name="'徐龙琴'"
-          :content="'仲恺农业工程学院，硕士，教授，硕士生导师，广州市农产品质量安全溯源信息技术重点实验室副主任、广东省高校智慧农业工程技术研究中心副主任、广东省农产品安全大数据工程技术研究中心副主任，广东省“千百十工程”校级培养对象'"
+          :content="'仲恺农业工程学院\n硕士，教授，硕士生导师'"
           :main="'农业大数据、智能信息处理、数据挖掘、区块链'"
           @click.native="toPage(4)"
         />

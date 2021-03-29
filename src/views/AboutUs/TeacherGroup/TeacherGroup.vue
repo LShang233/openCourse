@@ -1,5 +1,19 @@
 <template>
   <div>
+    <div class="awards-li">
+      <span class="active">
+        <router-link to="/TeacherGroup">教师团队</router-link>
+      </span>
+      <span>
+        <router-link to="/TeacherStyle">校级十佳教师风采</router-link>
+      </span>
+      <span>
+        <router-link to="/Awards">教师竞赛获奖</router-link>
+      </span>
+      <span>
+        <router-link to="/StudentAwards">学生竞赛获奖</router-link>
+      </span>
+    </div>
     <div class="teacher-group" v-show="htmlId == 1">
       <p>课程负责人</p>
       <div class="teacher-cards">
@@ -765,6 +779,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.awards-li {
+  width: 100%;
+  margin-bottom: 24px;
+  span {
+    a {
+      color: #515a6e;
+    }
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 12px;
+    padding: 8px 0;
+    cursor: pointer;
+    &:hover {
+      border-bottom: 3px solid #3b888b;
+      font-weight: 600;
+    }
+  }
+  .active {
+    border-bottom: 3px solid #3b888b;
+    font-weight: 600;
+  }
+}
 .teacher-group {
   width: 100%;
   > p {
