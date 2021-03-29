@@ -369,6 +369,7 @@ export default {
 <style lang="scss" scoped>
 .awards-li {
   width: 100%;
+  margin-bottom: 12px;
   span {
     a {
       color: #515a6e;
