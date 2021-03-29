@@ -11,11 +11,15 @@
     </div>
     <div>
       <p>指导大学生创新创业训练项目</p>
-      <iframe src="http://qgailab.com/course/static/pdf/5.0b9f967.pdf" class="guide_project"></iframe>
+      <!-- <iframe
+        src="http://qgailab.com/course/static/pdf/5.0b9f967.pdf"
+        class="guide_project"
+      ></iframe> -->
+      <img src="../../../assets/pdf/innovation.jpg" alt="">
     </div>
     <div>
-      <p>指导大学生创新创业训练项目</p>
-      <pre>
+      <p>专利和软著</p>
+      <!-- <pre>
 1.一种基于控制器的并行打印系统， 发明专利，专利申请号：201710321442.x
 2.一种嵌入式系统及单色位图压缩、主机， 发明专利，专利申请号：201710422841.5
 3.一种求救方法、智能头盔、终端及系统， 发明专利，专利申请号：201710404316.0
@@ -36,8 +40,12 @@
 18.智能急救头盔APP软件，计算机软件著作权，软著登记号：2017SR288722
 19.康复训练及评估平台，计算机软件著作权，软著登记号：2017SR385752
 20.康复训练及评估移动管理系统，计算机软件著作权，软著登记号：2017SR385305
-      </pre>
-      <iframe src="http://qgailab.com/course/static/pdf/6.d18a2da.pdf" class="guide_project"></iframe>
+      </pre> -->
+      <!-- <iframe
+        src="http://qgailab.com/course/static/pdf/6.d18a2da.pdf"
+        class="guide_project"
+      ></iframe> -->
+      <img src="../../../assets/pdf/patent.jpg" alt="">
     </div>
     <div>
       <p>研究成果：教改论文</p>
@@ -125,7 +133,7 @@ export default {
   > div {
     margin-bottom: 24px;
     > p {
-      font-size: 12px;
+      font-size: 16px;
       margin: 8px 0;
       font-weight: 600;
       color: #868684;
@@ -136,7 +144,6 @@ export default {
     }
     > img {
       width: 100%;
-      height: 460px;
       background-color: #868684;
     }
     > div {

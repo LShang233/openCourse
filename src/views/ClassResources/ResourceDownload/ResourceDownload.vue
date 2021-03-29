@@ -60,6 +60,7 @@
             height="100%"
             style="border:none"
           ></iframe>
+          <!-- <img v-for="item in imgSrc" :src='item' alt=""> -->
         </div>
       </TabPane>
     </Tabs>
@@ -139,6 +140,17 @@ export default {
             "http://qgailab.com/course/resources//practical/report/all.docx",
         },
       ],
+      imgSrc: [
+        require('../../../assets/pdf/classDesign/1.jpg'),
+        require('../../../assets/pdf/classDesign/2.jpg'),
+        require('../../../assets/pdf/classDesign/3.jpg'),
+        require('../../../assets/pdf/classDesign/4.jpg'),
+        require('../../../assets/pdf/classDesign/5.jpg'),
+        require('../../../assets/pdf/classDesign/6.jpg'),
+        require('../../../assets/pdf/classDesign/7.jpg'),
+        require('../../../assets/pdf/classDesign/8.jpg'),
+        require('../../../assets/pdf/classDesign/9.jpg'),
+      ]
     };
   },
 };
@@ -231,7 +243,10 @@ export default {
     height: 600px;
   }
   .class_design {
-    height: 600px;
+    height: 800px;
+    img{
+      width: 100%;
+    }
   }
 }
 </style>

@@ -91,12 +91,13 @@
       >
     </div>
     <div v-show="htmlId == 2" class="student-awards">
-      <iframe
+      <!-- <iframe
             src="http://qgailab.com/course/static/pdf/4.c74a1e8.pdf"
             width="100%"
             height="100%"
             style="border:none"
-          ></iframe>
+          ></iframe> -->
+        <img v-for="item in imgs" :src="item" alt="">
     </div>
   </div>
 </template>
@@ -105,6 +106,31 @@ export default {
   data() {
     return {
       htmlId: 1,
+      imgs: [
+        require('../../../assets/pdf/awards/1.jpg'),
+        require('../../../assets/pdf/awards/2.jpg'),
+        require('../../../assets/pdf/awards/3.jpg'),
+        require('../../../assets/pdf/awards/4.jpg'),
+        require('../../../assets/pdf/awards/5.jpg'),
+        require('../../../assets/pdf/awards/6.jpg'),
+        require('../../../assets/pdf/awards/7.jpg'),
+        require('../../../assets/pdf/awards/8.jpg'),
+        require('../../../assets/pdf/awards/9.jpg'),
+        require('../../../assets/pdf/awards/10.jpg'),
+        require('../../../assets/pdf/awards/11.jpg'),
+        require('../../../assets/pdf/awards/12.jpg'),
+        require('../../../assets/pdf/awards/13.jpg'),
+        require('../../../assets/pdf/awards/14.jpg'),
+        require('../../../assets/pdf/awards/15.jpg'),
+        require('../../../assets/pdf/awards/16.jpg'),
+        require('../../../assets/pdf/awards/17.jpg'),
+        require('../../../assets/pdf/awards/18.jpg'),
+        require('../../../assets/pdf/awards/19.jpg'),
+        require('../../../assets/pdf/awards/20.jpg'),
+        require('../../../assets/pdf/awards/21.jpg'),
+        require('../../../assets/pdf/awards/22.jpg'),
+        require('../../../assets/pdf/awards/23.jpg'),
+      ]
     };
   },
   methods: {
@@ -145,8 +171,12 @@ export default {
 }
 .student-awards {
   width: 100%;
-  height: 540px;
+  height: 800px;
   margin: 16px 0;
+  overflow-y: scroll;
   // background-color: #868684;
+  img{
+    width: 100%;
+  }
 }
 </style>

@@ -105,12 +105,13 @@
       </TabPane>
       <TabPane label="课程安排" name="name4">
         <div class="class_arrange">
-          <iframe
+          <!-- <iframe
             src="http://qgailab.com/course/static/pdf/1.9e2aa70.pdf"
             width="100%"
             height="100%"
             style="border:none"
-          ></iframe>
+          ></iframe> -->
+          <img src="../../../assets/pdf/classArrange/1.jpg" alt="">
         </div>
       </TabPane>
     </Tabs>
@@ -186,8 +187,12 @@ export default {};
   }
 
   .class_arrange {
-    height: 600px;
+    height: 1000px;
     margin-bottom: 50px;
+    overflow-y: scroll;
+    img{
+      width: 100%;
+    }
   }
 }
 </style>
