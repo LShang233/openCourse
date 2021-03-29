@@ -10,7 +10,6 @@ import Awards from '@/views/AboutUs/Awards/Awards'
 import StudentAwards from '@/views/AboutUs/Awards/StudentAwards'
 import TeacherStyle from '@/views/AboutUs/TeacherStyle/TeacherStyle'
 import ActivitySilhouette from '@/views/AboutUs/ActivitySilhouette/ActivitySilhouette'
-import NotificationForm from '@/views/AboutUs/NotificationForm/NotificationForm'
 import UniversityAlliance from '@/views/AboutUs/UniversityAlliance/UniversityAlliance'
 import Login from '@/views/Login/Login'
 import Notice from '@/views/ClassResources/Notice/Notice'
@@ -120,11 +119,6 @@ export default new Router({
               path: '/ActivitySilhouette',
               name: 'ActivitySilhouette',
               component: ActivitySilhouette
-            },
-            {
-              path: '/NotificationForm',
-              name: 'NotificationForm',
-              component: NotificationForm
             },
             {
               path: '/UniversityAlliance',

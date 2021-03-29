@@ -15,44 +15,21 @@
         src="http://qgailab.com/course/static/pdf/5.0b9f967.pdf"
         class="guide_project"
       ></iframe> -->
-      <img src="../../../assets/pdf/innovation.jpg" alt="">
+      <!-- <img src="../../../assets/pdf/innovation.jpg" alt=""> -->
+      <Table :columns="columns2" :data="softwares" style="z-index: -1; margin: 0; width: 100%"></Table>
     </div>
     <div>
-      <p>专利和软著</p>
-      <!-- <pre>
-1.一种基于控制器的并行打印系统， 发明专利，专利申请号：201710321442.x
-2.一种嵌入式系统及单色位图压缩、主机， 发明专利，专利申请号：201710422841.5
-3.一种求救方法、智能头盔、终端及系统， 发明专利，专利申请号：201710404316.0
-4.一种车祸监测方法及装置，专利申请号：发明专利，201710403952.1
-5.一种可穿戴设备电源管理方法及装置， 发明专利，专利申请号：201710404701.5
-6.一种基于体感设备的康复训练评估方法及系统， 发明专利，专利申请号：201710533108.0
-7.一种基于控制器的并行打印系统， 实用新型专利，专利申请号：201720511717.1
-8.一种嵌入式系统及单色位图压缩主机， 实用新型专利，专利申请号：201720659842.7
-9.一种智能急救头盔， 实用新型专利，专利申请号：201720626760.2
-10.一种车祸监测系统， 实用新型专利，专利申请号：201720632265.2
-11.一种可穿戴设备电源管理装置， 实用新型专利，专利申请号：201720632371.0
-12.一种基于体感设备的康复训练评估系统， 实用新型专利， 专利申请号：201720802908.3
-13.一款头盔内部硬件构造专利，外观专利， 专利申请号：2017302528844
-14.订单集群打印系统，计算机软件著作权，软著登记号：2017SR267145
-15.移动订单管理及打印系统，计算机软件著作权，软著登记号：2017SR274760
-16.微型控制打印系统，计算机软件著作权，软著登记号：2017SR274774
-17.智能急救头盔系统，计算机软件著作权，软著登记号：2017SR287905
-18.智能急救头盔APP软件，计算机软件著作权，软著登记号：2017SR288722
-19.康复训练及评估平台，计算机软件著作权，软著登记号：2017SR385752
-20.康复训练及评估移动管理系统，计算机软件著作权，软著登记号：2017SR385305
-      </pre> -->
+      <p>专利</p>
       <!-- <iframe
         src="http://qgailab.com/course/static/pdf/6.d18a2da.pdf"
         class="guide_project"
       ></iframe> -->
-      <img src="../../../assets/pdf/patent.jpg" alt="">
+      <!-- <img src="../../../assets/pdf/patent.jpg" alt="" /> -->
+      <Table :columns="columns3" :data="copyrights" style="z-index: -1; margin: 0; width: 100%"></Table>
     </div>
     <div>
       <p>研究成果：教改论文</p>
-      <pre>
-1.2015年，”基于CDIO模式的数据库课程设计教学改革与实践”，2015年5期
-2.2017年，“软件工程专业五位一体培养体系的探索与实践”，2017年28期
-      </pre>
+      <Table :columns="columns4" :data="papers" style="z-index: -1; margin: 0; width: 100%"></Table>
       <div>
         <img src="../../../assets/images/result1.png" />
         <img src="../../../assets/images/result2.png" />
@@ -61,6 +38,8 @@
   </div>
 </template>
 <script>
+const {softwares } = require("../../../assets/data/software");
+const {copyrights} = require("../../../assets/data/copyright");
 export default {
   data() {
     return {
@@ -117,6 +96,52 @@ export default {
           level: "校级",
         },
       ],
+      columns2: [
+        {
+          title: "名称",
+          key: "name",
+        },
+        {
+          title: "时间",
+          key: "time",
+        },
+      ],
+      softwares: softwares,
+      copyrights: copyrights,
+      columns3: [
+        {
+          title: "类型",
+          key: "type"
+        },{
+          title: "名称",
+          key: "name"
+        },{
+          title: "持有人",
+          key: "owner"
+        },{
+          title: "专利号",
+          key: "id"
+        }
+      ],
+      columns4: [
+        {
+          title: "名称",
+          key: "name"
+        },{
+          title: "时间",
+          key: "time",
+        }
+      ],
+      papers: [
+        {
+          name: "“基于CDIO模式的数据库课程设计教学改革与实践”",
+          time: "2015年5期"
+        },
+        {
+          name: "“软件工程专业五位一体培养体系的探索与实践”",
+          time: "2017年28期"
+        },
+      ]
     };
   },
 };
@@ -148,7 +173,7 @@ export default {
     }
     > div {
       width: calc(100% + 24px);
-      height: 240px;
+      // height: 240px;
       margin: 0 -12px;
       display: flex;
       > img {

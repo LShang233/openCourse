@@ -240,7 +240,7 @@ export default {
   }
 
   .experiment_book {
-    height: 600px;
+    height: 800px;
   }
   .class_design {
     height: 800px;

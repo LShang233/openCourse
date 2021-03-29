@@ -15,20 +15,45 @@
       </span>
     </div>
     <div class="student-awards">
-      <iframe
+      <!-- <iframe
         src="http://qgailab.com/course/static/pdf/4.c74a1e8.pdf"
         width="100%"
         height="100%"
         style="border: none"
-      ></iframe>
+      ></iframe> -->
+       <Table stripe :columns="column1" :data="awards">
+
+       </Table>
     </div>
   </div>
 </template>
 <script>
+const {awards} = require('../../../assets/data/awards');
 export default {
   data() {
     return {
       htmlId: 1,
+      column1: [
+        {
+          title: "比赛",
+          key: 'competition'
+        },
+        {
+          title: "项目",
+          key: 'project'
+        },
+        {
+          title: "时间",
+          key: 'time'
+        },{
+          title: "级别",
+          key: 'level'
+        },{
+          title: "奖项",
+          key: "award"
+        }
+      ],
+      awards: awards
     };
   },
   methods: {
@@ -71,9 +96,13 @@ export default {
   }
 }
 .student-awards {
-  width: 100%;
-  height: 540px;
+    width: 100%;
+  height: 800px;
   margin: 16px 0;
+  overflow-y: auto;
   // background-color: #868684;
+  img{
+    width: 100%;
+  }
 }
 </style>
