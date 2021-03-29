@@ -6,7 +6,7 @@
           <div class="top_wrap">
             <h2>THE HIGH-QUALITY<br />PROGRAMMMING COURSE</h2>
              
-            <h2 class="main_title">程序设计<br />精品资源共享网</h2>
+            <h2 class="main_title">广东省在线开放课程<br />程序设计基础</h2>
           </div>
           <div class="bottom_wrap">
             <router-link to="/ClassResources/VideoLearn"
