@@ -4,7 +4,7 @@
       <div>
         <div class="left_wrap">
           <div class="top_wrap">
-            <h2>THE HIGH-QUALITY<br />PROGRAMMMING COURSE</h2>
+            <h2>THE FOUNDATION OF<br />PROGRAMMING DESIGN</h2>
              
             <h2 class="main_title">广东省在线开放课程<br />程序设计基础</h2>
           </div>
@@ -30,7 +30,7 @@
       <h3>课程简介</h3>
       <div class="content">
         <p>
-          程序设计是高等院校计算机专业及相关专业重要的专业基础课，其目的是培养学生程序设计理念、掌握程序设计的基础方法，为后续课程打下坚实基础。
+          程序设计基础是高等院校计算机专业及相关专业重要的专业基础课，其目的是培养学生程序设计理念、掌握程序设计的基础方法，为后续课程打下坚实基础。
         </p>
         <p>
           我们在多年讲授和使用编程的基础上，深切感受到学习程序设计不仅要掌握的语法要点和编程规范，更重要的是要领会结构化程序设计思想，综合运用知识开发大型程序，为此，我们在原有讲授的基础上，增加了“软件开发过程的内容”，希望通过程序设计，用一个较大规范的实例掌握运用软件工程的思想进行程序开发的一般过程。
@@ -57,7 +57,7 @@
       </div>
     </div>
     <div class="teacher_teams">
-      <h3>教师团队</h3>
+      <h3>高效联盟</h3>
       <div class="teacher_list">
         <img src="../../assets/images/shizililiang.png" alt="" class="pic3" />
         <div
@@ -82,52 +82,68 @@ export default {
       teacherTeam: [
         {
           name: "谢光强",
-          avatar: "http://qgailab.com/course/static/img/xie.2730c8e.png",
+          avatar: require("../../assets/teacherstyle/head/xie.2730c8e.png"),
         },
         {
-          name: "吴伟民",
-          avatar: "http://qgailab.com/course/static/img/wu.8919f53.png",
+          name: '万海',
+          avatar: require('../../assets/teacherstyle/head/wan.png')
         },
         {
-          name: "曾安",
-          avatar: "http://qgailab.com/course/static/img/an.e2db41f.png",
+          name: '杨艳丽',
+          avatar: require('../../assets/teacherstyle/head/yyl.png')
         },
         {
-          name: "谢国波",
-          avatar: "http://qgailab.com/course/static/img/bo.61a80ac.png",
+          name: '吴涛',
+          avatar: require('../../assets/teacherstyle/head/wu.jpg')
         },
         {
-          name: "林伟",
-          avatar: "http://qgailab.com/course/static/img/wei.d6be8f3.png",
+          name: '徐龙琴',
+          avatar: require('../../assets/teacherstyle/head/xu.png')
         },
-        {
-          name: "李杨",
-          avatar: "http://qgailab.com/img/6.d44330b8.png",
-        },
-        {
-          name: "朱清华",
-          avatar: "http://qgailab.com/course/static/img/zhu.30b1e6a.png",
-        },
-        {
-          name: "陈云华",
-          avatar: "http://qgailab.com/course/static/img/chen.1961b0c.png",
-        },
-        {
-          name: "曾颖",
-          avatar: "http://qgailab.com/course/static/img/ying.f8cd54b.jpg",
-        },
-        {
-          name: "孙宣东",
-          avatar: "http://qgailab.com/course/static/img/xuan.d808a03.jpg",
-        },
-        {
-          name: "汪明慧",
-          avatar: "http://qgailab.com/course/static/img/hui.4ced16d.jpg",
-        },
-        {
-          name: "路璐",
-          avatar: "http://qgailab.com/course/static/img/lu.b03aa5f.jpg",
-        },
+        // {
+        //   name: "吴伟民",
+        //   avatar: "http://qgailab.com/course/static/img/wu.8919f53.png",
+        // },
+        // {
+        //   name: "曾安",
+        //   avatar: "http://qgailab.com/course/static/img/an.e2db41f.png",
+        // },
+        // {
+        //   name: "谢国波",
+        //   avatar: "http://qgailab.com/course/static/img/bo.61a80ac.png",
+        // },
+        // {
+        //   name: "林伟",
+        //   avatar: "http://qgailab.com/course/static/img/wei.d6be8f3.png",
+        // },
+        // {
+        //   name: "李杨",
+        //   avatar: "http://qgailab.com/img/6.d44330b8.png",
+        // },
+        // {
+        //   name: "朱清华",
+        //   avatar: "http://qgailab.com/course/static/img/zhu.30b1e6a.png",
+        // },
+        // {
+        //   name: "陈云华",
+        //   avatar: "http://qgailab.com/course/static/img/chen.1961b0c.png",
+        // },
+        // {
+        //   name: "曾颖",
+        //   avatar: "http://qgailab.com/course/static/img/ying.f8cd54b.jpg",
+        // },
+        // {
+        //   name: "孙宣东",
+        //   avatar: "http://qgailab.com/course/static/img/xuan.d808a03.jpg",
+        // },
+        // {
+        //   name: "汪明慧",
+        //   avatar: "http://qgailab.com/course/static/img/hui.4ced16d.jpg",
+        // },
+        // {
+        //   name: "路璐",
+        //   avatar: "http://qgailab.com/course/static/img/lu.b03aa5f.jpg",
+        // },
       ],
       unionSchool: [
         {
@@ -359,7 +375,7 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: 120px;
-    padding-bottom: 40px;
+    padding-bottom: 80px;
 
     .teacher_list {
       position: relative;
@@ -377,7 +393,7 @@ export default {
         width: 400px;
         height: 400px;
         z-index: 0;
-        transform: translate(60%, -15%);
+        transform: translate(60%, -30%);
       }
 
       .teacher_item {

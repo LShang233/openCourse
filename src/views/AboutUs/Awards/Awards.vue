@@ -1,12 +1,18 @@
 <template>
   <div>
     <div class="awards-li">
-      <span @click="show(1)" :class="{ active: htmlId == 1 }"
-        >教师竞赛获奖</span
-      >
-      <span @click="show(2)" :class="{ active: htmlId == 2 }"
-        >学生竞赛获奖</span
-      >
+      <span>
+        <router-link to="/TeacherGroup">教师团队</router-link>
+      </span>
+      <span>
+        <router-link to="/TeacherStyle">校级十佳教师风采</router-link>
+      </span>
+      <span class="active">
+        <router-link to="/Awards">教师竞赛获奖</router-link>
+      </span>
+      <span>
+        <router-link to="/StudentAwards">学生竞赛获奖</router-link>
+      </span>
     </div>
     <div v-show="htmlId == 1" class="teacher-awards">
       <p>谢光强</p>
@@ -144,6 +150,9 @@ export default {
 .awards-li {
   width: 100%;
   span {
+    a {
+      color: #515a6e;
+    }
     display: inline-block;
     font-size: 16px;
     margin: 0 12px;

@@ -2,26 +2,26 @@
   <div class="about-us-ul">
     <ul>
       <li @click="addActive(0)">
-        <router-link to="/TeacherGroup">师资团队</router-link>
-      </li>
-      <li @click="addActive(1)">
-        <router-link to="/ReformAndResearch">教学改革与研究</router-link>
-      </li>
-      <li @click="addActive(2)">
-        <router-link to="/Awards">获奖情况</router-link>
-      </li>
-      <li @click="addActive(3)">
-        <router-link to="/TeacherStyle">校级十佳教师风采</router-link>
-      </li>
-      <li @click="addActive(4)">
-        <router-link to="/ActivitySilhouette">活动剪影</router-link>
-      </li>
-      <li @click="addActive(5)">
-        <router-link to="/NotificationForm">申报书</router-link>
-      </li>
-      <li @click="addActive(6)">
         <router-link to="/UniversityAlliance">高校联盟</router-link>
       </li>
+      <li @click="addActive(1)">
+        <router-link to="/TeacherGroup">广东工业大学</router-link>
+      </li>
+      <li @click="addActive(2)">
+        <router-link to="/ReformAndResearch">教学改革与研究</router-link>
+      </li>
+      <li @click="addActive(3)">
+        <router-link to="/ActivitySilhouette">活动剪影</router-link>
+      </li>
+      <!-- <li @click="addActive(3)">
+        <router-link to="/TeacherGroup">教师团队</router-link>
+      </li>
+      <li @click="addActive(4)">
+        <router-link to="/TeacherStyle">校级十佳教师风采</router-link>
+      </li> -->
+      <!-- <li @click="addActive(5)">
+        <router-link to="/NotificationForm">申报书</router-link>
+      </li> -->
     </ul>
   </div>
 </template>
