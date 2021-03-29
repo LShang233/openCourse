@@ -178,6 +178,14 @@ export default {
       this.teacherId = index;
     },
   },
+  created() {
+    // 获取传来的参数
+    console.log(this.$route);
+    const { teacherId } = this.$route.query;
+    if (teacherId !== undefined) {
+      this.toPage(teacherId);
+    }
+  },
 };
 </script>
 <style lang="scss" scoped>

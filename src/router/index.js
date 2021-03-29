@@ -88,7 +88,7 @@ export default new Router({
           path: 'AboutUs',
           name: 'AboutUs',
           component: AboutUs,
-          redirect: '/TeacherGroup',
+          redirect: '/UniversityAlliance',
           children: [
             {
               path: '/TeacherGroup',
