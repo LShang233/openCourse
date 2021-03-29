@@ -7,6 +7,7 @@ import AboutUs from '@/views/AboutUs/AboutUs'
 import TeacherGroup from '@/views/AboutUs/TeacherGroup/TeacherGroup'
 import ReformAndResearch from '@/views/AboutUs/ReformAndResearch/ReformAndResearch'
 import Awards from '@/views/AboutUs/Awards/Awards'
+import StudentAwards from '@/views/AboutUs/Awards/StudentAwards'
 import TeacherStyle from '@/views/AboutUs/TeacherStyle/TeacherStyle'
 import ActivitySilhouette from '@/views/AboutUs/ActivitySilhouette/ActivitySilhouette'
 import NotificationForm from '@/views/AboutUs/NotificationForm/NotificationForm'
@@ -104,6 +105,11 @@ export default new Router({
               path: '/Awards',
               name: 'Awards',
               component: Awards
+            },
+            {
+              path: '/StudentAwards',
+              name: 'StudentAwards',
+              component: StudentAwards
             },
             {
               path: '/TeacherStyle',
