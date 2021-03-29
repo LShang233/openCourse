@@ -878,9 +878,6 @@ export default {
         align-items: center;
         height: 35px;
 
-        .main_title {
-        }
-
         .subtitle {
           font-size: 16px;
           margin-left: 20px;

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="first-wrap">
         <!-- 字体需修改 -->
-        <h1>广东工业大学 | 程序设计</h1>
+        <h1>广东工业大学 | 程序设计基础</h1>
         <ul class="nav_list">
           <li @click="handleChange(0)" class="active">
             <router-link class="nav_item" to="/HomePage">首页</router-link>
@@ -77,13 +77,14 @@ export default {
   position: fixed;
   background: #7ad3d6;
   z-index: 999;
+  font-size: 16px;
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    width: 1300px;
+    width: calc(100% - 100px);
     margin: 0 auto;
     color: #25787b;
 
@@ -142,6 +143,9 @@ export default {
 
     .login-wrap {
       color: #25787b;
+      // width: calc(100% - 710px);
+      // text-align: right;
+
       .login-item {
         color: #25787b;
         margin: 0 5px;
