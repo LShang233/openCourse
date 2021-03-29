@@ -62,7 +62,6 @@
         <img src="../../assets/images/shizililiang.png" alt="" class="pic3" />
         <router-link :to="{
           path: '/UniversityAlliance',
-          query: {teacherId: index}
         }"
           class="teacher_item"
           v-for="(item, index) in teacherTeam"
