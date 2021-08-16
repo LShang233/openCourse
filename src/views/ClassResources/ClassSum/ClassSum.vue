@@ -187,9 +187,12 @@ export default {};
   }
 
   .class_arrange {
-    height: 1000px;
+    height: 800px;
     margin-bottom: 50px;
     overflow-y: scroll;
+    border: 1px solid #9E9E9E;
+    border-radius: 5px;
+
     img{
       width: 100%;
     }

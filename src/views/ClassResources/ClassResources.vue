@@ -82,13 +82,15 @@ export default {
   // width: 1200px;
   // display: flex;
   // justify-content: center;
-  min-height: calc(100vh - 100px);
+  // min-height: calc(100vh - 100px);
+  // font-size: 18px;
 
 
   .class_wrap {
     padding: 10px 0 20px;
     margin: 0 auto;
-    width: 1200px;
+    // width: 1200px;
+    width: 80%;
     display: flex;
     // justify-content: center;
 
@@ -105,10 +107,11 @@ export default {
         .nav_item {
           display: inline-block;
           width: 100%;
-          padding: 10px 0;
+          padding: 12px 0;
           color: #868684;
           transition: all 0.1s;
           font-weight: 600;
+          // font-size: .75em;
 
           &:hover,
           &.active {
@@ -121,7 +124,7 @@ export default {
 
     .main_content {
       margin-left: 20px;
-      width: calc(1200px - 200px);
+      width: calc(100% - 200px);
     }
   }
 }

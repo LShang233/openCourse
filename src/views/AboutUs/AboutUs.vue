@@ -20,7 +20,7 @@ export default {
 .about-us {
   display: flex;
   flex-direction: row;
-  width: 1200px;
+  width: 80%;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 24px 0;
@@ -29,8 +29,8 @@ export default {
   min-height: calc(100vh - 100px);
 
   .about-us-main {
-    width: calc(100% - 180px);
-    margin: -36px 0 0 24px;
+    width: calc(100% - 200px);
+    margin: -36px 0 0 20px;
   }
 
   pre {

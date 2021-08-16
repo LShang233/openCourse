@@ -202,8 +202,8 @@ export default {
       justify-content: space-between;
       flex-wrap: wrap;
       > li {
-        width: 190px;
-        margin: 5px;
+        width: 19%;
+        margin: 5px 0;
         color: #fff;
         text-align: center;
 
@@ -227,14 +227,14 @@ export default {
           }
         }
 
-        &:first-child,
-        &:last-child {
-          margin-left: 0;
-        }
+        // &:first-child,
+        // &:last-child {
+        //   margin-left: 0;
+        // }
 
-        &:nth-last-child(2) {
-          margin-right: 0;
-        }
+        // &:nth-last-child(2) {
+        //   margin-right: 0;
+        // }
       }
     }
   }

@@ -9,10 +9,10 @@
             <h2 class="main_title">广东省在线开放课程<br />程序设计基础</h2>
           </div>
           <div class="bottom_wrap">
-            <router-link to="/ClassResources/VideoLearn"
+            <router-link class="select_item" to="/ClassResources/VideoLearn"
               >开始学习 <img src="../../assets/images/mingshifudao.png" alt=""
             /></router-link>
-            <a href="http://qgailab.com/anywork/html/login.html" target="blank"
+            <a class="select_item" href="http://qgailab.com/anywork/html/login.html" target="blank"
               >在线测试<img
                 src="../../assets/images/xueqianzhenduan.png"
                 alt=""
@@ -228,7 +228,7 @@ export default {
         display: flex;
         justify-content: space-between;
 
-        a {
+        .select_item {
           flex: 1;
           display: flex;
           justify-content: space-between;
@@ -238,8 +238,9 @@ export default {
           font-weight: 600;
           color: #fff;
           border-radius: 8px;
-          padding: 0 15px;
+          padding: 15px;
           box-sizing: border-box;
+          white-space: nowrap;
 
           &:last-child {
             margin-left: 10px;
