@@ -369,15 +369,15 @@ export default {
 <style lang="scss" scoped>
 .awards-li {
   width: 100%;
+  margin-bottom: 12px;
   span {
     a {
       color: #515a6e;
-      width: 100%;
-      height: 100%;
     }
     display: inline-block;
     font-size: 16px;
     margin: 0 12px;
+    padding: 8px 0;
     cursor: pointer;
     &:hover {
       border-bottom: 3px solid #3b888b;
