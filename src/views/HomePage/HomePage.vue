@@ -38,7 +38,7 @@
         <img src="../../assets/images/shizibaozhang.png" alt="" class="pic1" />
       </div>
     </div>
-    <div class="union_school">
+    <!-- <div class="union_school">
       <h3>联盟高校</h3>
       <div class="union_list">
         <img
@@ -55,29 +55,35 @@
           <p>{{ item.name }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="teacher_teams">
-      <h3>高效联盟</h3>
+      <h3>高校联盟</h3>
       <div class="teacher_list">
         <img src="../../assets/images/shizililiang.png" alt="" class="pic3" />
-        <div class="teacher_item" v-for="(item,index) in teacherTeam" :key="index">
-          <div class="img_wrap">
-            <img
-              class="teacher_pic"
-              :src="item.avatar"
-              alt=""
-            />
-            <img
-              class="school_pic"
-              :src="item.pic"
-              alt=""
-            />
+        <router-link :to="{
+          path: '/UniversityAlliance',
+        }"
+          class="teacher_item"
+          v-for="(item, index) in teacherTeam"
+          :key="index"
+        >
+          <div class="wrap">
+            <div class="img_wrap">
+              <img class="teacher_pic" :src="item.avatar" alt="" />
+              <img class="school_pic" :src="item.pic" alt="" />
+            </div>
+            <div class="man">
+              <p>{{ item.name }}</p>
+              <span v-show="index === 0">课程负责人</span> 
+            </div>
           </div>
-          <div class="man">
-            课程负责人
-            <p>{{item.name}}</p>
+          <div class="info">
+            <p>{{ item.info }}</p>
+            <p>{{ item.rank }}</p>
+            <h4>主要研究领域：</h4>
+            <h4>{{ item.main }}</h4>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -92,28 +98,43 @@ export default {
       teacherTeam: [
         {
           name: "谢光强",
-          avatar: require("../../assets/teacherstyle/head/xie.2730c8e.png"),
+          avatar: require("../../assets/teacherstyle/head/xie.jpg"),
           pic: require("../../assets/teacherstyle/school/gdut.png"),
+          info: "广东工业大学计算机学院副院长",
+          rank: "博士，教授，硕士生导师",
+          main: "人工智能、无人驾驶、数据挖掘",
         },
         {
           name: "万海",
           pic: require("../../assets/teacherstyle/school/zsdx.png"),
           avatar: require("../../assets/teacherstyle/head/wan.png"),
+          info: "中山大学数据科学与计算机学院",
+          rank: "博士，副教授，硕士生导师",
+          main: "KR、ASP、SG、SAT、COP理论研究",
         },
         {
           name: "杨艳丽",
           pic: require("../../assets/teacherstyle/school/szdx.png"),
           avatar: require("../../assets/teacherstyle/head/yyl.png"),
+          info: "深圳大学计算机与软件学院",
+          rank: "博士，副教授，硕士生导师",
+          main: "人工智能、智能控制",
         },
         {
           name: "吴涛",
           pic: require("../../assets/teacherstyle/school/lnsfdx.png"),
           avatar: require("../../assets/teacherstyle/head/wu.jpg"),
+          info: "岭南师范学院",
+          rank: "教学发展与质量测评中心主任，博士，教授",
+          main: "人工智能、无人驾驶、数据挖掘",
         },
         {
           name: "徐龙琴",
           pic: require("../../assets/teacherstyle/school/zknxy.png"),
           avatar: require("../../assets/teacherstyle/head/xu.png"),
+          info: "仲恺农业工程学院",
+          rank: "硕士，教授，硕士生导师",
+          main: "农业大数据、智能信息处理、数据挖掘、区块链",
         },
       ],
       unionSchool: [
@@ -353,63 +374,96 @@ export default {
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-between;
-      align-items: center;
-      // padding: 10px 20px 20px;
+      // align-items: center;
+      align-items: stretch; //子元素撑开父元素
       width: 1000px;
 
       .pic3 {
         position: absolute;
         top: 0;
-        right: 0;
+        left: 0;
         width: 400px;
         height: 400px;
         z-index: 0;
-        transform: translate(60%, -30%);
+        transform: translate(-50%, -20%);
       }
 
       .teacher_item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: flex-end;
+        // flex-wrap: wrap;
+        // text-align: left;
+        display: block;
+        flex: 1;
         padding: 15px 10px;
-        margin: 7px 3px;
+        margin: 7px 5px;
         background: #fff;
         border-radius: 5px;
         border: 1px solid #eee;
         z-index: 1;
+        color: #000;
 
         &::-webkit-scrollbar {
           width: 0;
         }
 
-        .img_wrap {
-          position: relative;
+        .wrap {
+          display: flex;
+          // justify-content: space-between;
+          align-items: flex-end;
+          flex-wrap: wrap;
+          text-align: left;
 
-          .teacher_pic {
-            height: 140px;
-            width: 100px;
-            vertical-align: middle;
-            border-radius: 5px 5px 0 5px;
+          .img_wrap {
+            position: relative;
+
+            .teacher_pic {
+              height: 140px;
+              width: 100px;
+              vertical-align: middle;
+              border-radius: 5px 5px 0 5px;
+            }
+
+            .school_pic {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              width: 30px;
+              height: 30px;
+              border-radius: 5px 0 0 0;
+            }
           }
 
-          .school_pic {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 5px 0 0 0;
+          .man {
+            margin-left: 5px;
+            margin-bottom: 5px;
+            p {
+              margin-bottom: 5px;
+              font-size: 16px;
+              font-weight: 600;
+            }
           }
         }
 
-        .man {
-          margin-left: 5px;
-        }
+        .info {
+          margin-top: 10px;
+          text-align: left;
+          // text-indent: 2em;
 
-        p {
-          margin-top: 5px;
-          font-size: 16px;
-          font-weight: 600;
+          p {
+            // text-indent: 2em;
+            margin-top: 5px;
+          }
+
+          h4 {
+            margin-top: 10px;
+
+            &:nth-last-child(1) {
+              margin-top: 5px;
+              text-indent: 2em;
+            }
+          }
         }
       }
     }
