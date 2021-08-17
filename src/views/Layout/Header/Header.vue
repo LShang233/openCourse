@@ -75,7 +75,7 @@ export default {
 .Header {
   width: 100%;
   position: fixed;
-  background: #7ad3d6;
+  background: #009D9F;
   z-index: 999;
   font-size: 16px;
 
@@ -117,13 +117,13 @@ export default {
             align-items: center;
             height: 100%;
             padding: 0 40px;
-            color: #25787b;
+            color: #fff;
             text-decoration: none;
             transition: all 0.2s;
           }
 
           &:hover {
-            background: #57aeb1;
+            background: #055052;
 
             .nav_item {
               color: #fff;
@@ -131,7 +131,7 @@ export default {
           }
 
           &.active {
-            background: #57aeb1;
+            background: #055052;
 
             .nav_item {
               color: #fff;
@@ -142,18 +142,18 @@ export default {
     }
 
     .login-wrap {
-      color: #25787b;
+      color: #fff;
       // width: calc(100% - 710px);
       // text-align: right;
 
       .login-item {
-        color: #25787b;
+        color: #fff;
         margin: 0 5px;
         text-decoration: none;
         cursor: pointer;
 
         &:hover {
-          color: #fff;
+          color: #eaf8f9;
           text-decoration: underline;
         }
       }

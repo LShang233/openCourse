@@ -35,7 +35,7 @@ export default {
           url: "/ClassResources/ClassSum",
         },
         {
-          name: "视频教学",
+          name: "课程学习",
           url: "/ClassResources/VideoLearn",
         },
         {
@@ -116,7 +116,7 @@ export default {
           &:hover,
           &.active {
             color: #fff;
-            background: #57aeb1;
+            background: #009D9F;
           }
         }
       }

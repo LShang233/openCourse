@@ -56,7 +56,7 @@ export default {
   }
   li {
     &:hover {
-      background-color: #57aeb1;
+      background-color: #009D9F;
       a {
         color: white;
       }
@@ -71,7 +71,7 @@ export default {
     }
   }
   .active {
-    background-color: #57aeb1;
+    background-color: #009D9F;
     a {
       color: white;
     }

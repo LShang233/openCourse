@@ -21,7 +21,7 @@ export default {
     align-items: center;
     text-align: center;
     color: #fff;
-    background: #3B888B;
+    background: #055052;
 
     span {
       margin: 0 20px;
