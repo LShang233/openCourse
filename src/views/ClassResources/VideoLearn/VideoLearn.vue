@@ -6,7 +6,7 @@
           <h2 class="main_title">{{ mainTitle }}</h2>
           <h4 class="subtitle">{{ subtitle }}</h4>
         </div>
-        <p>学习任务：{{ work }}</p>
+        <!-- <p>学习任务：{{ work }}</p> -->
       </div>
       <Tabs value="name1" class="study_wrap">
         <TabPane label="视频" name="name1">
@@ -23,17 +23,22 @@
           </div>
         </TabPane>
         <TabPane label="预习" name="name2">
-          预习
+          <p>请点击下方的链接进入预习，一定要好好预习哦！</p>
+          <a href="http://qgailab.com/anywork/student/" target="blank"
+            >anywork</a
+          >
         </TabPane>
         <TabPane label="课件" name="name3">
-          课件
+          <div>
+            <a class="class_file" href="">课件</a>
+          </div>
         </TabPane>
         <TabPane label="小测" name="name4">
-          小测
+          <p>
+            请自行打开anyview去进行小测，学习完每章的一小节后就可以去测试了，检验自己的学习成果，根据测试结果再调整自己的学习情况
+          </p>
         </TabPane>
-        <TabPane label="其他" name="name5">
-          其他
-        </TabPane>
+        <TabPane label="其他" name="name5"> 其他 </TabPane>
       </Tabs>
       <!-- <ul class="nav_list">
         <li class="active">视频</li>
@@ -67,7 +72,14 @@
           :class="item1.rate == 100 ? 'class_done' : ''"
         >
           <span> {{ item1.title }}</span>
-          <i>{{ item1.rate }}%</i>
+          <i
+            :style="{
+              transition: 'all 0.3s',
+              transform: item1.show ? 'rotate(90deg)' : 'rotate(-90deg)',
+            }"
+            >></i
+          >
+          <!-- <i>{{ item1.rate }}%</i> -->
         </div>
         <ul class="class_detail" v-show="item1.show">
           <li
@@ -79,7 +91,9 @@
             v-for="(item2, index2) in item1.detail"
             :key="index2"
           >
-            <span class="charpter">{{ item2.title }}</span>
+            <span class="charpter">{{
+              `${index1 + 1}.${index2 + 1 + " " + item2.title}`
+            }}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -144,7 +158,7 @@
 </template>
 
 <script>
-import { videoData } from "./videoSrc";
+import { videoData } from "./videoSrc_new";
 export default {
   data() {
     return {
