@@ -5,16 +5,15 @@
         <!-- 字体需修改 -->
         <h1>广东工业大学 | 程序设计基础</h1>
         <ul class="nav_list">
-          <li @click="handleChange(0)" class="active">
-            <router-link class="nav_item" to="/HomePage">首页</router-link>
-          </li>
-          <li @click="handleChange(1)">
-            <router-link class="nav_item" to="/ClassResources"
-              >课程资源</router-link
-            >
-          </li>
-          <li @click="handleChange(2)">
-            <router-link class="nav_item" to="/AboutUs">关于我们</router-link>
+          <li
+            @click="handleChange(index)"
+            :class="nowPage === index ? 'active' : ''"
+            v-for="(item, index) in nav"
+            :key="index"
+          >
+            <router-link class="nav_item" :to="item.link">{{
+              item.content
+            }}</router-link>
           </li>
         </ul>
       </div>
@@ -37,18 +36,26 @@ export default {
   data() {
     return {
       userNumber: "",
+      // 导航栏
+      nav: [
+        {
+          link: "/HomePage",
+          content: "首页",
+        },
+        {
+          link: "/ClassResources",
+          content: "课程资源",
+        },
+        {
+          link: "/AboutUs",
+          content: "关于我们",
+        },
+      ],
     };
   },
   methods: {
     handleChange(numb) {
-      //获取导航栏的各项
-      let list = document.querySelector(".nav_list").getElementsByTagName("li");
-      //清除样式
-      for (let i = 0; i < list.length; i++) {
-        list[i].classList.remove("active");
-      }
-      //添加样式，分清进入哪个模块
-      list[numb].classList.add("active");
+      this.$store.commit("changePage",numb);
     },
 
     //用户退出
@@ -68,6 +75,11 @@ export default {
   created() {
     this.userNumber = window.sessionStorage.getItem("userNumber");
   },
+  computed: {
+    nowPage() {
+      return this.$store.state.topIndex;
+    },
+  },
 };
 </script>
 
@@ -75,7 +87,7 @@ export default {
 .Header {
   width: 100%;
   position: fixed;
-  background: #009D9F;
+  background: #009d9f;
   z-index: 999;
   font-size: 16px;
 
