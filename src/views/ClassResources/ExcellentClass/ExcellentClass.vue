@@ -1,12 +1,12 @@
 <template>
-  <div id="VideoLearn">
+  <div id="ExcellentClass">
     <div class="main_content">
       <div class="title_wrap">
         <div class="title">
           <h2 class="main_title">{{ mainTitle }}</h2>
           <h4 class="subtitle">{{ subtitle }}</h4>
         </div>
-        <!-- <p>学习任务：{{ work }}</p> -->
+        <p>学习任务：{{ work }}</p>
       </div>
       <Tabs value="name1" class="study_wrap">
         <TabPane label="视频" name="name1">
@@ -28,25 +28,18 @@
             >anywork</a
           >
         </TabPane>
-        <TabPane label="课件" name="name3">
-          <div>
-            <a class="class_file" href="">课件</a>
-          </div>
-        </TabPane>
-        <TabPane label="小测" name="name4">
+        <!-- <TabPane label="课件" name="name3">
+          <iframe :src="filesrc" frameborder="0"></iframe>
+        </TabPane> -->
+        <TabPane label="小测" name="name3">
           <p>
             请自行打开anyview去进行小测，学习完每章的一小节后就可以去测试了，检验自己的学习成果，根据测试结果再调整自己的学习情况
           </p>
         </TabPane>
-        <TabPane label="其他" name="name5"> 其他 </TabPane>
+        <!-- <TabPane label="其他" name="name5"> 其他 </TabPane> -->
       </Tabs>
-      <!-- <ul class="nav_list">
-        <li class="active">视频</li>
-        <li>预习</li>
-        <li>课件</li>
-        <li>提纲</li>
-      </ul>
-      <div class="video_area">
+      
+      <!-- <div class="video_area">
         <video
           controls="controls"
           :src="videoSrc"
@@ -158,7 +151,7 @@
 </template>
 
 <script>
-import { videoData } from "./videoSrc_new";
+import { videoData } from "./videoSrc";
 export default {
   data() {
     return {
@@ -190,7 +183,7 @@ export default {
   methods: {
     //展示收起详细内容
     showDetail(index) {
-      let { title, work, detail, show } = this.classesList[index];
+      let { title, work, detail, show,filesrc } = this.classesList[index];
       this.classesList[index].show = !this.classesList[index].show;
 
       //展开详细内容时更新
@@ -382,5 +375,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./VideoLearn.scss";
+@import "./ExcellentClass.scss";
 </style>

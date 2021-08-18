@@ -165,7 +165,7 @@ export default {
      startStudy() {
       this.$store.commit("changePage", 1);
       this.$router.push({
-        path: "/ClassResources/VideoLearn",
+        path: "/ClassResources/ExcellentClass",
       });
     },
   },

@@ -14,12 +14,13 @@ import UniversityAlliance from '@/views/AboutUs/UniversityAlliance/UniversityAll
 import Login from '@/views/Login/Login'
 import Notice from '@/views/ClassResources/Notice/Notice'
 import ClassSum from '@/views/ClassResources/ClassSum/ClassSum'
-import VideoLearn from '@/views/ClassResources/VideoLearn/VideoLearn'
+import ClassLearn from '@/views/ClassResources/ClassLearn/ClassLearn'
 import ResourceDownload from '@/views/ClassResources/ResourceDownload/ResourceDownload'
 import ExtraStudy from '@/views/ClassResources/ExtraStudy/ExtraStudy'
 import Discuss from '@/views/ClassResources/Discuss/Discuss'
 import DiscussDetail from '@/views/ClassResources/Discuss/DiscussDetail/DiscussDetail'
 import ClassAssess from '@/views/ClassResources/ClassAssess/ClassAssess'
+import ExcellentClass from '@/views/ClassResources/ExcellentClass/ExcellentClass'
 
 Vue.use(Router)
 
@@ -53,9 +54,21 @@ export default new Router({
               component: ClassSum
             },
             {
-              name: 'VideoLearn',
-              path: 'VideoLearn',
-              component: VideoLearn
+              name: 'ClassLearn',
+              path: 'ClassLearn',
+              component: ClassLearn,
+              // children:[
+              //   {
+              //     name: '',
+              //     path: '',
+              //     component: '',
+              //   },
+              //   {
+              //     name: '',
+              //     path: '',
+              //     component: '',
+              //   }
+              // ]
             },
             {
               name: 'ResourceDownload',
@@ -81,6 +94,11 @@ export default new Router({
               name: 'ClassAssess',
               path: 'ClassAssess',
               component: ClassAssess
+            },
+            {
+              name: 'ExcellentClass',
+              path: 'ExcellentClass',
+              component: ExcellentClass
             },
           ]
         },

@@ -4,14 +4,30 @@
       <div>
         <ul class="left_nav">
           <!-- 侧导航栏 -->
-          <li v-for="(item, index) in leftNav" :key="index">
+          <li v-for="(item, index) in leftNav" :key="item.url">
             <router-link
               @click.native="changePanel(index)"
-              class="nav_item"
-              :class="index === panelIndex ? 'active' : ''"
+              :class="[
+                'nav_item',
+                { active: index === panelIndex && !item.children },
+              ]"
               :to="item.url"
               >{{ item.name }}</router-link
             >
+            <ul class="child_nav">
+              <li
+                @click="changeChild(index, child_index)"
+                :class="[
+                  {
+                    active: child_index === childIndex && panelIndex === index,
+                  },
+                ]"
+                v-for="(child, child_index) in item.children"
+                :key="child.url"
+              >
+                {{ child.name }}
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -36,7 +52,17 @@ export default {
         },
         {
           name: "课程学习",
-          url: "/ClassResources/VideoLearn",
+          url: "/ClassResources/ExcellentClass",
+          children: [
+            {
+              name: "精品课程",
+              url: "/ClassResources/ExcellentClass",
+            },
+            {
+              name: "开放课程",
+              url: "/ClassResources/ClassLearn",
+            },
+          ],
         },
         {
           name: "资源下载",
@@ -57,22 +83,34 @@ export default {
       ],
       //当前所在页
       panelIndex: 0,
+      // 当前子页
+      childIndex: 0,
     };
   },
   methods: {
     //切换面板
     changePanel(index) {
       this.panelIndex = index;
+      this.childIndex = 0;
+    },
+    // 切换子面板
+    changeChild(parent, child) {
+      this.panelIndex = parent;
+      this.childIndex = child;
+      this.$router.push({
+        path: this.leftNav[parent].children[child].url,
+      })
     },
   },
-  created(){
+  created() {
     // console.log(this.$route.name);
-    switch(this.$route.name){
-      case 'VideoLearn':
+    switch (this.$route.name) {
+      case "ExcellentClass":
         this.panelIndex = 2;
+        this.childIndex = 0;
         break;
     }
-  }
+  },
 };
 </script>
 
@@ -84,7 +122,6 @@ export default {
   // justify-content: center;
   // min-height: calc(100vh - 100px);
   // font-size: 18px;
-
 
   .class_wrap {
     padding: 10px 0 20px;
@@ -100,7 +137,7 @@ export default {
       margin-bottom: 200px;
       box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.16);
 
-      li {
+      > li {
         width: 180px;
         background: #faf7fa;
 
@@ -116,7 +153,21 @@ export default {
           &:hover,
           &.active {
             color: #fff;
-            background: #009D9F;
+            background: #009d9f;
+          }
+        }
+
+        .child_nav {
+          background: #e9e7e9;
+
+          > li {
+            padding: 10px 0 10px 20px;
+            cursor: pointer;
+            &:hover,
+            &.active {
+              color: #fff;
+              background: #009d9f;
+            }
           }
         }
       }
